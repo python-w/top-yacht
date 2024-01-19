@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./custom.scss";
+import { ThemeProvider, useTheme } from '@mui/material/styles';
+import { Container, CssBaseline } from '@mui/material';
+import CustomTheme from './customTheme';
+import ClubSetup from './components/Screens/ClubSetup';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={CustomTheme}>
+      <CssBaseline />
+      <Container sx={{[CustomTheme.breakpoints.up("sm")]: {maxWidth: '100%'}}}>
+        <ClubSetup />
+      </Container>
+    </ThemeProvider>
   );
 }
 
