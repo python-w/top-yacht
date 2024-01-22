@@ -3,13 +3,13 @@ import "./custom.scss";
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import { Container, CssBaseline } from '@mui/material';
 import CustomTheme from './customTheme';
-import ClubSetup from './components/Screens/ClubSetup';
+import ClubSetup from './pages/ClubSetup';
 
 function App() {
   return (
     <ThemeProvider theme={CustomTheme}>
       <CssBaseline />
-      <Container sx={{[CustomTheme.breakpoints.up("sm")]: {maxWidth: '100%'}}}>
+      <Container sx={{ [CustomTheme.breakpoints.up("sm")]: { maxWidth: '100%' } }}>
         <ClubSetup />
       </Container>
     </ThemeProvider>

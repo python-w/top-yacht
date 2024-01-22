@@ -12,13 +12,11 @@ import CEntrantsSvg from '../../images/Entrants.svg';
 import CSetupSvg from '../../images/SetUp.svg';
 import CConfigurationSvg from '../../images/Configuration.svg';
 import CstAppbar from './CstAppbar';
+import { get4k } from "../../utils/Helpers";
 
 const drawerWidth = 400;
 
-function get4k(target) {
-  const vwContext = 2201 * 0.01 * 1;
-  return (target / vwContext) * 1 + "vw";
-}
+
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -93,7 +91,7 @@ const MiniDrawer = () => {
   return (
     <>
       <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)}>
-      <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} />
+        <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} />
         <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: -15, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden" }}>
           <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
           {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24 }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24 }} />}
@@ -122,7 +120,7 @@ const MiniDrawer = () => {
                   <img src={menuItem.icon} alt="" />
                 </ListItemIcon>
                 {isDrawerOpen ?
-                  <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} /> : '' }
+                  <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} /> : ''}
               </ListItem>
               {isDrawerOpen ? (
                 <>

@@ -1,11 +1,49 @@
+:root {
+  --primary-color: #356DAD;
+}
+
+@font-face {
+  font-family: 'Hellix';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: local(), url('../src/fonts/Hellix-Regular.woff2');
+}
+
+@font-face {
+  font-family: 'Hellix';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local(), url('../src/fonts/Hellix-Medium.woff2');
+}
+
+@font-face {
+  font-family: 'Hellix';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local(), url('../src/fonts/Hellix-SemiBold.woff2');
+}
+
+@font-face {
+  font-family: 'Hellix';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local(), url('../src/fonts/Hellix-Bold.woff2');
+}
+
 .navigationDrawer .MuiTypography-root {
   font-weight: 600;
   letter-spacing: 3.2px;
 }
+
 .navigationDrawer .MuiList-root .MuiList-root .MuiTypography-root {
   font-weight: 600;
   letter-spacing: 0;
 }
+
 .navigationDrawer .MuiList-root .MuiDivider-root {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
