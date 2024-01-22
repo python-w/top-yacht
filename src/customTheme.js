@@ -1,12 +1,4 @@
 import { createTheme } from "@mui/material";
-import HellixThin from "./fonts/Hellix-Thin.woff2";
-import HellixLight from "./fonts/Hellix-Light.woff2";
-import HellixRegular from "./fonts/Hellix-Regular.woff2";
-import HellixMedium from "./fonts/Hellix-Medium.woff2";
-import HellixSemibold from "./fonts/Hellix-SemiBold.woff2";
-import HellixBold from "./fonts/Hellix-Bold.woff2";
-import HellixExtraBold from "./fonts/Hellix-ExtraBold.woff2";
-import HellixBlack from "./fonts/Hellix-Black.woff2";
 import BodyBg from './images/body-bg.png';
 
 const CustomTheme = createTheme({

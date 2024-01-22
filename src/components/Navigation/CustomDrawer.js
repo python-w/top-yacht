@@ -16,8 +16,6 @@ import { get4k } from "../../utils/Helpers";
 
 const drawerWidth = 400;
 
-
-
 const openedMixin = (theme) => ({
   width: drawerWidth,
   transition: theme.transitions.create("width", {
