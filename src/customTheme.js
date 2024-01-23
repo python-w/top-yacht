@@ -112,10 +112,12 @@ const CustomTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundImage: 'linear-gradient(#356DAD, transparent)',
-          backgroundColor: "#1D518D",
-          color: "#fff",
           border: 'none',
+          background: 'transparent',
+          // backgroundImage: 'linear-gradient(#356DAD, transparent)',
+          // backgroundColor: "#1D518D",
+          // color: "#fff",
+          // border: 'none',
         },
       },
     },
