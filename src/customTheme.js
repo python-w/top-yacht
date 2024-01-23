@@ -133,6 +133,17 @@ const CustomTheme = createTheme({
         }
       }
     },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          "& .hasActiveChild": {
+            backgroundColor: 'rgba(255, 255, 255, 0.10)',
+            width: '48px',
+            borderRadius: 16
+          }
+        }
+      }
+    },
     MuiAppBar: {
       styleOverrides: {
         root: {
