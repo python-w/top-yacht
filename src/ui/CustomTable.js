@@ -21,13 +21,22 @@ const Table = styled.table`
     }
     tbody{
         tr{
-            background: #fff;
+            &:nth-child(even){
+                td{
+                    background: #D8E9EE;
+                }
+            }
         }
         td{
             padding: 10px 24px;
+            background: #fff;
             &:first-child{
                 border-top-left-radius: 48px;
                 border-bottom-left-radius: 48px;
+            }
+            &:last-child{
+                border-top-right-radius: 48px;
+                border-bottom-right-radius: 48px;
             }
         }
     }

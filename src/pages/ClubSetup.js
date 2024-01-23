@@ -32,7 +32,7 @@ const ClubSetup = () => {
   const data = [
     ['John Doe', 'Admin', '123-456-7890', 'john@example.com'],
     ['Jane Smith', 'User', '987-654-3210', 'jane@example.com'],
-    // Add more rows as needed
+    ['John Doe', 'Admin', '123-456-7890', 'john@example.com']
   ];
 
 
