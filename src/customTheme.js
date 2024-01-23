@@ -1,7 +1,16 @@
 import { createTheme } from "@mui/material";
 import BodyBg from './images/body-bg.png';
 
+
 const CustomTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#356DAD',
+    },
+    secondary: {
+      main: '#42566C',
+    },
+  },
   breakpoints: {
     values: {
       xs: 0,
@@ -22,6 +31,7 @@ const CustomTheme = createTheme({
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           fontWeight: 400,
+          color: 'var(--body-text-color)'
         },
         "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
           borderRadius: 10,

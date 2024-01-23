@@ -9,10 +9,10 @@ import CSearchSvg from '../../images/Search.svg';
 import CComputerSvg from '../../images/Computer.svg';
 import CSearchIcon from '../../images/Search.svg';
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import StyledInputBase from "../styled/inputBase";
+import StyledInputBase from "../../ui/InputBase";
 
 
-const CstAppbar = ({onDrawerOpen, ondrawerWidth}) => {
+const CstAppbar = ({ onDrawerOpen, ondrawerWidth }) => {
   const theme = useTheme();
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -25,7 +25,7 @@ const CstAppbar = ({onDrawerOpen, ondrawerWidth}) => {
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-  
+
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -71,11 +71,13 @@ const CstAppbar = ({onDrawerOpen, ondrawerWidth}) => {
   //     justifyContent: "flex-end",
   //   },
   // }));
-  
+
   return (
-    <MuiAppBar position="fixed" open={onDrawerOpen} sx={{marginLeft: onDrawerOpen ? ondrawerWidth : '', width: onDrawerOpen ? `calc(100% - ${ondrawerWidth}px)` : `calc(100% - ${theme.spacing(8)} + 1px)`, "& .MuiToolbar-root": {
-      justifyContent: "flex-end",
-    }, }}>
+    <MuiAppBar position="fixed" open={onDrawerOpen} sx={{
+      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: onDrawerOpen ? `calc(100% - ${ondrawerWidth}px)` : `calc(100% - ${theme.spacing(8)} + 1px)`, "& .MuiToolbar-root": {
+        justifyContent: "flex-end",
+      },
+    }}>
       <Toolbar>
         <Search>
           <StyledInputBase
@@ -92,7 +94,7 @@ const CstAppbar = ({onDrawerOpen, ondrawerWidth}) => {
             }}
           />
           <SearchIconWrapper>
-            <img src={CSearchIcon} alt=""/>
+            <img src={CSearchIcon} alt="" />
           </SearchIconWrapper>
         </Search>
         <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD" }}>

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { styled, useTheme, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import InputBase from '@mui/material/InputBase';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -19,6 +18,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       borderRadius: '12px',
       '&:focus': {
         width: '100%',
+        borderColor: 'var(--primary-color)',
+        boxShadow: '0 0 0 2px rgba(53, 109, 173, 0.20)'
       },
     },
   },
