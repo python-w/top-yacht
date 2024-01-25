@@ -55,7 +55,7 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleD
 
   return (
     <MuiAppBar position="fixed" open={onDrawerOpen} sx={{
-      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: onDrawerOpen ? `calc((100% - ${ondrawerWidth}) * 1px)` : `calc(100% - ${theme.spacing(8)} + 1px)`
+      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: !onBelowXlBreakpoint ? onDrawerOpen ? `calc(100% - ${ondrawerWidth}px)` : `calc(100% - ${theme.spacing(13.125)} + 1px)` : `100%`
     }}>
       <Toolbar sx={{justifyContent: "flex-end"}}>
         {onBelowXlBreakpoint ? <IconButton disableRipple onClick={onhandleDrawerToggle} className="navDrawerMobileBtn" sx={{ color: "#fff", height: 120, padding: 0, width: 28, height: 28, borderRadius: 0, overflow: "hidden", marginRight: 'auto' }}><img alt="Drawer Button" src={DrawerIcon} style={{ position: "absolute", width: "100%", height: "100%" }} /></IconButton> : ''

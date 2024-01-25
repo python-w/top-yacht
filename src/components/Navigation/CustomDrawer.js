@@ -46,9 +46,12 @@ const closedMixin = (theme) => ({
   [theme.breakpoints.up("xxxl")]: {
     borderRadius: `0 ${get4k(40)} ${get4k(40)} 0`,
   },
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("xl")]: {
     width: `calc(${theme.spacing(15)} + 1px)`,
   },
+  [theme.breakpoints.up("xs")]: {
+    width: 0,
+  }
 });
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(({ theme, open }) => ({
