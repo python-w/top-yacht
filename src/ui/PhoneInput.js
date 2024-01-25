@@ -1,6 +1,5 @@
 import 'react-international-phone/style.css';
 import { PhoneInput } from "react-international-phone";
-import FormLabel from './FormLabel';
 import styled from 'styled-components';
 
 const StyledPhoneInput = styled(PhoneInput)`
@@ -32,11 +31,12 @@ const StyledPhoneInput = styled(PhoneInput)`
         width: 100%;
         font-size: inherit;
         color: inherit;
-        border: 1px solid #C2CBD6;
+        border: 1px solid var(--border-color);
         border-radius: 12px;
         background: no-repeat;
         padding-left: 68px;
-        height: 40px;
+        height: 41px;
+        background: #fff;
         &:focus{
             border-color: var(--primary-color);
             box-shadow: 0 0 0 2px rgba(53, 109, 173, 0.20)
@@ -44,10 +44,9 @@ const StyledPhoneInput = styled(PhoneInput)`
     }
 `
 
-const CustomPhoneInput = ({ label, value, onChange, defaultCountry, isRequired }) => {
+const CustomPhoneInput = ({ value, onChange, defaultCountry }) => {
     return (
         <div>
-            <FormLabel>{label}{isRequired && <span>*</span>}</FormLabel>
             <StyledPhoneInput
                 defaultCountry={defaultCountry}
                 value={value}

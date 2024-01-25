@@ -1,5 +1,6 @@
-import { createTheme } from "@mui/material";
+import { createTheme, useMediaQuery } from "@mui/material";
 import BodyBg from './images/body-bg.png';
+import { get4k } from "./utils/Helpers";
 
 
 const CustomTheme = createTheme({
@@ -14,10 +15,10 @@ const CustomTheme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 575,
+      sm: 576,
       md: 768,
-      lg: 992,
-      xl: 1200,
+      lg: 1025,
+      xl: 1366,
       xxxl: 2201
     },
   },
@@ -51,6 +52,29 @@ const CustomTheme = createTheme({
           minHeight: 24,
           // border: "3px solid rgba(29, 81, 141, 0.5)",
           marginRight: 10,
+        },
+
+        '.MuiPopover-root .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper': {
+          borderRadius: '8px',
+          border: '1px solid #F0F0F0',
+          background: '#FFF',
+          boxShadow: '0px 4px 20px 0px rgba(0, 0, 0, 0.08)',
+          marginTop: '3px',
+        },
+
+        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root': {
+          borderRadius: '8px',
+          padding: '12px',
+          height: 'auto',
+        },
+        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root.Mui-selected': {
+          background: '#E8EFF8',
+        },
+        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root:hover': {
+          background: '#fff',
+        },
+        '.MuiPopover-root .css-1pvtjvc-MuiList-root-MuiMenu-list': {
+          padding: '8px',
         },
       },
     },
@@ -112,10 +136,12 @@ const CustomTheme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundImage: 'linear-gradient(#356DAD, transparent)',
-          backgroundColor: "#1D518D",
-          color: "#fff",
           border: 'none',
+          background: 'transparent',
+          // backgroundImage: 'linear-gradient(#356DAD, transparent)',
+          // backgroundColor: "#1D518D",
+          // color: "#fff",
+          // border: 'none',
         },
       },
     },
@@ -129,6 +155,20 @@ const CustomTheme = createTheme({
           "&:hover::-webkit-scrollbar-thumb, &:hover *::-webkit-scrollbar-thumb": {
             backgroundColor: "rgba(29, 81, 141, 0.5)",
             // borderColor: "rgba(29, 81, 141, 0.5)",
+          }
+        }
+      }
+    },
+    MuiListItem: {
+      styleOverrides: {
+        root: {
+          "& .hasActiveChild": {
+            backgroundColor: 'rgba(255, 255, 255, 0.10)',
+            width: '48px',
+            borderRadius: 16,
+            '@media (min-width: 2201px)': {
+              width: get4k(48)
+            }
           }
         }
       }
