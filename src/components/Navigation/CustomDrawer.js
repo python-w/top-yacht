@@ -196,7 +196,7 @@ const MiniDrawer = () => {
                 </>
               }
             </Box>
-            {isDrawerOpen ?
+            {isBelowXlBreakpoint && isDrawerOpen ?
               <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", height: 120, padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden" }}>
               <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24 }} />
             </IconButton>
