@@ -49,7 +49,7 @@ const closedMixin = (theme) => ({
   [theme.breakpoints.up("xl")]: {
     width: `calc(${theme.spacing(15)} + 1px)`,
   },
-  [theme.breakpoints.up("xs")]: {
+  [theme.breakpoints.down("xl")]: {
     width: 0,
   }
 });
@@ -145,14 +145,14 @@ const MiniDrawer = () => {
     {
       menu: "Setup",
       children: [
-        { label: "Event Setup", path: "/club-setup-edit-view" },
+        { label: "Event Setup", path: "/club-setup-edit-details" },
         { label: "Series Setup - KB", path: "/series-setup-kb" },
         { label: "Series Setup - OTB", path: "/series-setup-otb" },
         { label: "Race Calendar", path: "/race-calendar" },
       ],
       icon: CSetupSvg,
     },
-    { menu: "Settings", children: [{ label: "Event Setup", path: "/event-setup" }], icon: CConfigurationSvg },
+    { menu: "Settings", children: [{ label: "Event Setup", path: "/club-setup-view-details" }], icon: CConfigurationSvg },
   ];
 
   function CheckIfActive(menuItem) {
@@ -168,7 +168,7 @@ const MiniDrawer = () => {
 
   return (
     <>
-      <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)}>
+      <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)} sx={{position: isBelowXlBreakpoint ? 'absolute' : 'relative'}}>
         {!isBelowXlBreakpoint ?
           <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden" }}>
             <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
