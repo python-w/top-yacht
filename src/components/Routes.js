@@ -1,8 +1,8 @@
 import * as React from "react";
-import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider, Route, Link } from "react-router-dom";
-import ClubSetup from '../pages/ClubSetup';
+import { createBrowserRouter } from "react-router-dom";
+import ClubSetupEditDetails from '../pages/Setup/ClubSetup/EditDetails';
 import CustomDrawer from "../components/Navigation/CustomDrawer";
+import ClubSetupViewDetails from "../pages/Setup/ClubSetup/ViewDetails";
 
 const topYachtRouter = createBrowserRouter([
   {
@@ -10,12 +10,16 @@ const topYachtRouter = createBrowserRouter([
     element: <CustomDrawer />,
     children: [
       {
-        path: "club-setup-edit-view",
-        element: <ClubSetup />,
+        path: "club-setup-edit-details",
+        element: <ClubSetupEditDetails />,
+      },
+      {
+        path: "club-setup-view-details",
+        element: <ClubSetupViewDetails />,
       },
       {
         path: "race-session",
-        element: <ClubSetup />,
+        element: <ClubSetupEditDetails />,
       },
     ],
   },

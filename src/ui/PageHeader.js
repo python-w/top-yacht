@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import unionSvg from '../images/union.svg';
 import styled from "styled-components";
+import ButtonPrimary from "./ButtonPrimary";
 
 const StyledBox = styled(Box)`
     position: relative;
@@ -13,10 +14,11 @@ const StyledBox = styled(Box)`
     }
 `
 
-export default function PageHeader({ title }) {
+export default function PageHeader({ title, btnText, hasBtn }) {
     return (
-        <Box>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: hasBtn && '62px' }}>
             <StyledBox component="span" sx={{ fontSize: '24px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--primary-color)', padding: '20px 32px', background: '#fff', display: 'inline-block', letterSpacing: '2.4px' }}>{title} <img src={unionSvg} alt="icon" /></StyledBox>
+            {hasBtn && <ButtonPrimary>{btnText}</ButtonPrimary>}
         </Box >
     )
 }

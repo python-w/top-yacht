@@ -9,7 +9,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     backgroundColor: "#fff",
     padding: theme.spacing(1, 0, 1, 2),
-    border: '1px solid #C2CBD6',
+    border: '1px solid var(--border-color)',
     // vertical padding + font size from searchIcon
     paddingRight: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),

@@ -53,6 +53,29 @@ const CustomTheme = createTheme({
           // border: "3px solid rgba(29, 81, 141, 0.5)",
           marginRight: 10,
         },
+
+        '.MuiPopover-root .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper': {
+          borderRadius: '8px',
+          border: '1px solid #F0F0F0',
+          background: '#FFF',
+          boxShadow: '0px 4px 20px 0px rgba(0, 0, 0, 0.08)',
+          marginTop: '3px',
+        },
+
+        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root': {
+          borderRadius: '8px',
+          padding: '12px',
+          height: 'auto',
+        },
+        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root.Mui-selected': {
+          background: '#E8EFF8',
+        },
+        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root:hover': {
+          background: '#fff',
+        },
+        '.MuiPopover-root .css-1pvtjvc-MuiList-root-MuiMenu-list': {
+          padding: '8px',
+        },
       },
     },
     MuiTypography: {
