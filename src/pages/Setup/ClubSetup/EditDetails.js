@@ -13,7 +13,7 @@ const ClubSetupEditDetails = () => {
     ...theme.mixins.toolbar,
   }));
   return (
-    <Box className="main_view" sx={{ flexGrow: 1, p: 3 }}>
+    <Box className="main_view" sx={{ flexGrow: 1, p: 3, pr: 0 }}>
       <DrawerHeader />
       <Box className="page_outer" sx={{ backgroundColor: "rgba(199, 219, 229, 0.25)", borderRadius: "32px", overflow: "hidden" }}>
         <PageHeader title="Club Setup" hasBtn={true} btnText="Save Details" />
