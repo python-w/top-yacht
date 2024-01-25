@@ -1,5 +1,6 @@
-import { createTheme } from "@mui/material";
+import { createTheme, useMediaQuery } from "@mui/material";
 import BodyBg from './images/body-bg.png';
+import { get4k } from "./utils/Helpers";
 
 
 const CustomTheme = createTheme({
@@ -14,10 +15,10 @@ const CustomTheme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
-      sm: 575,
+      sm: 576,
       md: 768,
-      lg: 992,
-      xl: 1200,
+      lg: 1025,
+      xl: 1366,
       xxxl: 2201
     },
   },
@@ -141,7 +142,10 @@ const CustomTheme = createTheme({
           "& .hasActiveChild": {
             backgroundColor: 'rgba(255, 255, 255, 0.10)',
             width: '48px',
-            borderRadius: 16
+            borderRadius: 16,
+            '@media (min-width: 2201px)': {
+              width: get4k(48)
+            }
           }
         }
       }

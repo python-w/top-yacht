@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { styled, useTheme, alpha } from "@mui/material/styles";
-import { Box, Toolbar, IconButton, Typography, Menu, MenuItem, Tooltip, Avatar } from "@mui/material";
+import { Box, Toolbar, IconButton, Typography, Menu, MenuItem, Tooltip, Avatar, useMediaQuery } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
 import ProfileMember from "../../images/member.png";
 import CPhoneSvg from '../../images/Phone.svg';
@@ -10,9 +10,10 @@ import CComputerSvg from '../../images/Computer.svg';
 import CSearchIcon from '../../images/Search.svg';
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import StyledInputBase from "../../ui/InputBase";
+import DrawerIcon from "../../images/menu-icon.svg";
 
 
-const CstAppbar = ({ onDrawerOpen, ondrawerWidth }) => {
+const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleDrawerToggle }) => {
   const theme = useTheme();
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -52,49 +53,34 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth }) => {
     top: 0,
   }));
 
-  // const AppBar = styled(MuiAppBar)(({ theme, open }) => ({
-  //   width: `calc(100% - ${theme.spacing(8)} + 1px)`,
-  //   zIndex: theme.zIndex.drawer,
-  //   transition: theme.transitions.create(["width", "margin"], {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen,
-  //   }),
-  //   ...(open && {
-  //     marginLeft: ondrawerWidth,
-  //     width: `calc(100% - ${ondrawerWidth}px)`,
-  //     transition: theme.transitions.create(["width", "margin"], {
-  //       easing: theme.transitions.easing.sharp,
-  //       duration: theme.transitions.duration.enteringScreen,
-  //     }),
-  //   }),
-  //   "& .MuiToolbar-root": {
-  //     justifyContent: "flex-end",
-  //   },
-  // }));
-
   return (
     <MuiAppBar position="fixed" open={onDrawerOpen} sx={{
-      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: onDrawerOpen ? `calc(100% - ${ondrawerWidth}px)` : `calc(100% - ${theme.spacing(8)} + 1px)`, "& .MuiToolbar-root": {
-        justifyContent: "flex-end",
-      },
+      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: onDrawerOpen ? `calc((100% - ${ondrawerWidth}) * 1px)` : `calc(100% - ${theme.spacing(8)} + 1px)`
     }}>
-      <Toolbar>
-        <Search>
+      <Toolbar sx={{justifyContent: "flex-end"}}>
+        {onBelowXlBreakpoint ? <IconButton disableRipple onClick={onhandleDrawerToggle} className="navDrawerMobileBtn" sx={{ color: "#fff", height: 120, padding: 0, width: 28, height: 28, borderRadius: 0, overflow: "hidden", marginRight: 'auto' }}><img alt="Drawer Button" src={DrawerIcon} style={{ position: "absolute", width: "100%", height: "100%" }} /></IconButton> : ''
+        }
+        <Search sx={{
+          [theme.breakpoints.up("sm")]: {
+            width: 360,
+            "&:focus": {
+              width: 380,
+            }
+          }}}>
           <StyledInputBase
             placeholder="Search"
             inputProps={{ "aria-label": "search" }}
             sx={{
               "& .MuiInputBase-input": {
                 border: "none",
-                width: "360px",
-                "&:focus": {
-                  width: "380px",
-                },
+                '&:focus': {
+                  width: '110%'
+                }
               },
             }}
           />
           <SearchIconWrapper>
-            <img src={CSearchIcon} alt="" />
+            <img src={CSearchIcon} alt="" width={20} height={20}/>
           </SearchIconWrapper>
         </Search>
         <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD" }}>

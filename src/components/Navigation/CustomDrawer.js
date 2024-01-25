@@ -20,6 +20,7 @@ import ClubLogoIcon from '../../images/logo-icon.svg';
 import AppLogo from '../../images/appLogo.svg';
 import AppLogoIcon from '../../images/appLogoIcon.svg';
 import UnionBg from '../../images/union.svg';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 const drawerWidth = 400;
 
@@ -90,9 +91,11 @@ const LogoBgStyled = styledC.div`
 `
 
 const MiniDrawer = () => {
-  const is4KScreen = useMediaQuery("(min-width: 2201px) and (max-width: 4000px)");
-
   const theme = useTheme();
+
+  const isBelowXlBreakpoint = useMediaQuery(theme.breakpoints.down('xl'));
+  const is4KScreen = useMediaQuery(theme.breakpoints.down('xxxl'));
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -103,6 +106,9 @@ const MiniDrawer = () => {
   }));
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+  const CloseDrawer = (drawerState) => () => {
+    setIsDrawerOpen(drawerState);
   };
 
   const menuItems = [
@@ -160,15 +166,19 @@ const MiniDrawer = () => {
   return (
     <>
       <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)}>
-        <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden" }}>
-          <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
-          {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24 }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24 }} />}
-        </IconButton>
-        <Box sx={{backgroundImage: 'linear-gradient(#356DAD, transparent)',backgroundColor: "#1D518D",color: "#fff",border: 'none', width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0",position: 'relative', height: '100%', display: 'flex', flexDirection: 'column'}}>
-          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} />
+        {!isBelowXlBreakpoint ?
+          <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden" }}>
+            <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
+            {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24 }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24 }} />}
+          </IconButton>
+          : '' }
+        <Box sx={{backgroundImage: 'linear-gradient(#356DAD, transparent)',backgroundColor: "#1D518D",color: "#fff",border: 'none', width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0",position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', overflowY: !isDrawerOpen ? 'hidden' : 'visible'}}>
+          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onhandleDrawerToggle={handleDrawerToggle}/>
           <DrawerHeader className="drawerHeader" sx={{
             [theme.breakpoints.up("sm")]: {
               minHeight: 84,
+              padding: !isDrawerOpen ? '0 12px' : '0 32px',
+              zIndex: 1101
             },
           }}>
             <Box sx={{backgroundColor:"white", width: isDrawerOpen? 232 : 88,height: 84, borderRadius: isDrawerOpen ? '0 0 30px 30px' : '0 0 25px 25px', display: 'flex', alignItems: 'center', padding: 2, position: 'relative',   transition: theme.transitions.create("border-radius", {easing: theme.transitions.easing.sharp,duration: theme.transitions.duration.enteringScreen})}}>
@@ -183,18 +193,34 @@ const MiniDrawer = () => {
                 </>
               }
             </Box>
+            {isDrawerOpen ?
+              <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", height: 120, padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden" }}>
+              <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24 }} />
+            </IconButton>
+            : ''}
           </DrawerHeader>
-          <List sx={{ overflowY: "auto", overflowX: "hidden", marginRight: is4KScreen ? get4k(8) : "16px", marginLeft: isDrawerOpen ? 0 : is4KScreen ? get4k(16) : "16px", mt: 4 }}>
+          <List sx={{ overflowY: "auto", overflowX: "hidden", marginRight: "16px", marginLeft: isDrawerOpen ? 0 : "16px", mt: 4, 
+          [theme.breakpoints.up("xxxl")]: {
+            marginRight: get4k(8), marginLeft: isDrawerOpen ? 0 : get4k(8), mt: get4k(32)
+          }
+          }}>
             {menuItems.map((menuItem, index) => (
               <ListItem key={index} disablePadding sx={{ display: "block" }}>
                 <ListItem
                   sx={{
-                    minHeight: is4KScreen ? get4k(48) : 48,
+                    minHeight: 48,
                     justifyContent: isDrawerOpen ? "initial" : "center",
-                    px: is4KScreen ? get4k(20) : 2.5,
+                    pr: 2,
+                    pl: isDrawerOpen ? 4 : 2,
                     marginBottom: isDrawerOpen ? 0 : 1,
                     marginInline: isDrawerOpen ? 0 : "auto",
-                    width: isDrawerOpen ? "100%" : is4KScreen ? get4k(48) : "48px",
+                    width: isDrawerOpen ? "100%" : "48px",
+                    [theme.breakpoints.up("xxxl")]: {
+                      minHeight: get4k(48),
+                      pr: get4k(16),
+                      pl: isDrawerOpen ? get4k(32) : get4k(16),
+                      width: isDrawerOpen ? "100%" : get4k(48),
+                    }
                   }}
                   className={!isDrawerOpen && CheckIfActive(menuItem) ? 'hasActiveChild' : ''}
                 >
@@ -219,7 +245,7 @@ const MiniDrawer = () => {
                               sx={{
                                 minHeight: is4KScreen ? get4k(48) : 48,
                                 justifyContent: isDrawerOpen ? "initial" : "center",
-                                pl: is4KScreen ? get4k(32) : 4,
+                                pl: is4KScreen ? get4k(40) : 5,
                               }}
                             >
                               <ListItemIcon
@@ -248,7 +274,7 @@ const MiniDrawer = () => {
                         </ListItem>
                       ))}
                     </List>
-                    <Divider sx={{ mr: is4KScreen ? get4k(8) : 1, ml: is4KScreen ? get4k(24) : 3, justifyContent: "center", my: is4KScreen ? get4k(20) : "20px", backgroundColor: "rgba(255,255,255,0.2)" }} />
+                    <Divider sx={{ mr: is4KScreen ? get4k(8) : 1, ml: is4KScreen ? get4k(32) : 4, justifyContent: "center", my: is4KScreen ? get4k(20) : "20px", backgroundColor: "rgba(255,255,255,0.2)" }} />
                   </>
                 ) : (
                   ""
@@ -256,8 +282,8 @@ const MiniDrawer = () => {
               </ListItem>
             ))}
           </List>
-          <Divider sx={{mx: 2}}/>
-          <Box sx={{width: '100%', height: 84, display: 'flex', alignItems: 'center', padding: 2, paddingLeft: 4, paddingBottom: 4, position: 'relative'}}>
+          <Divider sx={{mx: 2, mt: 'auto'}}/>
+          <Box sx={{width: '100%', height: 84, display: 'flex', alignItems: 'center', padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, paddingBottom: 4, position: 'relative', justifyContent: !isDrawerOpen ? 'center' : 'flex-start'}}>
               {!isDrawerOpen ?
                 <img src={AppLogoIcon} width={25} height={52}/>
               :
