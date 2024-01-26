@@ -14,11 +14,11 @@ const StyledBox = styled(Box)`
     }
 `
 
-export default function PageHeader({ title, btnText, hasBtn }) {
+export default function PageHeader({ title, btnText, icon, hasBtn, handlePageView }) {
     return (
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: hasBtn && '62px' }}>
             <StyledBox component="span" sx={{ fontSize: '24px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--primary-color)', padding: '20px 32px', background: '#fff', display: 'inline-block', letterSpacing: '2.4px' }}>{title} <img src={unionSvg} alt="icon" /></StyledBox>
-            {hasBtn && <ButtonPrimary>{btnText}</ButtonPrimary>}
+            {hasBtn && <ButtonPrimary onClick={handlePageView}>{icon} {btnText}</ButtonPrimary>}
         </Box >
     )
 }

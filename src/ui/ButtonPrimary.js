@@ -13,6 +13,12 @@ const Button = styled.button`
     border: 0;
     cursor: pointer;
     color: #fff;
+    display: inline-flex;
+    align-items: center;
+    svg{
+        font-size: 130%;
+        margin-right: 6px;
+    }
     &:hover{
         background: #2B598D;
     }
@@ -22,8 +28,8 @@ const Button = styled.button`
     }
 `
 
-export default function ButtonPrimary({ children }) {
+export default function ButtonPrimary({ children, onClick }) {
     return (
-        <Button role="button">{children}</Button>
+        <Button role="button" onClick={onClick}>{children}</Button>
     )
 }

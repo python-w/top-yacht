@@ -1,4 +1,4 @@
-import { createTheme, useMediaQuery } from "@mui/material";
+import { createTheme } from "@mui/material";
 import BodyBg from './images/body-bg.png';
 import { get4k } from "./utils/Helpers";
 
@@ -27,11 +27,12 @@ const CustomTheme = createTheme({
       styleOverrides: {
         body: {
           fontFamily: 'Hellix', // Set the default font family for the body
+          fontWeight: 400,
+          fontSize: '18px',
           backgroundColor: '#eff7f7',
           backgroundImage: `url(${BodyBg})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          fontWeight: 400,
           color: 'var(--body-text-color)'
         },
         "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
@@ -53,7 +54,9 @@ const CustomTheme = createTheme({
           // border: "3px solid rgba(29, 81, 141, 0.5)",
           marginRight: 10,
         },
-
+        p: {
+          marginTop: 0
+        },
         '.MuiPopover-root .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper': {
           borderRadius: '8px',
           border: '1px solid #F0F0F0',
@@ -62,7 +65,7 @@ const CustomTheme = createTheme({
           marginTop: '3px',
         },
 
-        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root': {
+        '.MuiPopover-root .MuiMenuItem-root': {
           borderRadius: '8px',
           padding: '12px',
           height: 'auto',

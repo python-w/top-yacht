@@ -36,6 +36,7 @@ const StyledPhoneInput = styled(PhoneInput)`
         background: no-repeat;
         padding-left: 68px;
         height: 41px;
+        font-size: 16px;
         background: #fff;
         &:focus{
             border-color: var(--primary-color);

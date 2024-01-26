@@ -14,7 +14,7 @@ import CConfigurationSvg from "../../images/Configuration.svg";
 import CstAppbar from "./CstAppbar";
 import { get4k } from "../../utils/Helpers";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
-import {styled as styledC} from 'styled-components';
+import { styled as styledC } from 'styled-components';
 import ClubLogo from '../../images/logo.svg';
 import ClubLogoIcon from '../../images/logo-icon.svg';
 import AppLogo from '../../images/appLogo.svg';
@@ -142,7 +142,7 @@ const MiniDrawer = () => {
     {
       menu: "Setup",
       children: [
-        { label: "Event Setup", path: "/club-setup-edit-view" },
+        { label: "Event Setup", path: "/club-setup" },
         { label: "Series Setup - KB", path: "/series-setup-kb" },
         { label: "Series Setup - OTB", path: "/series-setup-otb" },
         { label: "Race Calendar", path: "/race-calendar" },
@@ -156,7 +156,7 @@ const MiniDrawer = () => {
     const location = useLocation();
     return menuItem.children.some(child => child.path === location.pathname);
   }
-  
+
   function CheckIfActiveChild(menuItemChild) {
     const location = useLocation();
     console.log(menuItemChild.path, menuItemChild.path === location.pathname)
@@ -171,9 +171,9 @@ const MiniDrawer = () => {
             <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
             {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24 }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24 }} />}
           </IconButton>
-          : '' }
-        <Box sx={{backgroundImage: 'linear-gradient(#356DAD, transparent)',backgroundColor: "#1D518D",color: "#fff",border: 'none', width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0",position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', overflowY: !isDrawerOpen ? 'hidden' : 'visible'}}>
-          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onhandleDrawerToggle={handleDrawerToggle}/>
+          : ''}
+        <Box sx={{ backgroundImage: 'linear-gradient(#356DAD, transparent)', backgroundColor: "#1D518D", color: "#fff", border: 'none', width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0", position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', overflowY: !isDrawerOpen ? 'hidden' : 'visible' }}>
+          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onhandleDrawerToggle={handleDrawerToggle} />
           <DrawerHeader className="drawerHeader" sx={{
             [theme.breakpoints.up("sm")]: {
               minHeight: 84,
@@ -181,28 +181,29 @@ const MiniDrawer = () => {
               zIndex: 1101
             },
           }}>
-            <Box sx={{backgroundColor:"white", width: isDrawerOpen? 232 : 88,height: 84, borderRadius: isDrawerOpen ? '0 0 30px 30px' : '0 0 25px 25px', display: 'flex', alignItems: 'center', padding: 2, position: 'relative',   transition: theme.transitions.create("border-radius", {easing: theme.transitions.easing.sharp,duration: theme.transitions.duration.enteringScreen})}}>
+            <Box sx={{ backgroundColor: "white", width: isDrawerOpen ? 232 : 88, height: 84, borderRadius: isDrawerOpen ? '0 0 30px 30px' : '0 0 25px 25px', display: 'flex', alignItems: 'center', padding: 2, position: 'relative', transition: theme.transitions.create("border-radius", { easing: theme.transitions.easing.sharp, duration: theme.transitions.duration.enteringScreen }) }}>
               {!isDrawerOpen ?
-                <img src={ClubLogoIcon} width={39} height={52}/>
-              :
+                <img src={ClubLogoIcon} width={39} height={52} />
+                :
                 <>
-                <img src={ClubLogo} width={204} height={52}/>
-                <LogoBgStyled>
-                  <img src={UnionBg} width={86} height={69} className="logoBg"/>
-                </LogoBgStyled>
+                  <img src={ClubLogo} width={204} height={52} />
+                  <LogoBgStyled>
+                    <img src={UnionBg} width={86} height={69} className="logoBg" />
+                  </LogoBgStyled>
                 </>
               }
             </Box>
             {isDrawerOpen ?
               <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", height: 120, padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden" }}>
-              <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24 }} />
-            </IconButton>
-            : ''}
+                <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24 }} />
+              </IconButton>
+              : ''}
           </DrawerHeader>
-          <List sx={{ overflowY: "auto", overflowX: "hidden", marginRight: "16px", marginLeft: isDrawerOpen ? 0 : "16px", mt: 4, 
-          [theme.breakpoints.up("xxxl")]: {
-            marginRight: get4k(8), marginLeft: isDrawerOpen ? 0 : get4k(8), mt: get4k(32)
-          }
+          <List sx={{
+            overflowY: "auto", overflowX: "hidden", marginRight: "16px", marginLeft: isDrawerOpen ? 0 : "16px", mt: 4,
+            [theme.breakpoints.up("xxxl")]: {
+              marginRight: get4k(8), marginLeft: isDrawerOpen ? 0 : get4k(8), mt: get4k(32)
+            }
           }}>
             {menuItems.map((menuItem, index) => (
               <ListItem key={index} disablePadding sx={{ display: "block" }}>
@@ -282,16 +283,16 @@ const MiniDrawer = () => {
               </ListItem>
             ))}
           </List>
-          <Divider sx={{mx: 2, mt: 'auto'}}/>
-          <Box sx={{width: '100%', height: 84, display: 'flex', alignItems: 'center', padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, paddingBottom: 4, position: 'relative', justifyContent: !isDrawerOpen ? 'center' : 'flex-start'}}>
-              {!isDrawerOpen ?
-                <img src={AppLogoIcon} width={25} height={52}/>
+          <Divider sx={{ mx: 2, mt: 'auto' }} />
+          <Box sx={{ width: '100%', height: 84, display: 'flex', alignItems: 'center', padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, paddingBottom: 4, position: 'relative', justifyContent: !isDrawerOpen ? 'center' : 'flex-start' }}>
+            {!isDrawerOpen ?
+              <img src={AppLogoIcon} width={25} height={52} />
               :
-                <>
-                <img src={AppLogo} width={125} height={37}/>
-                </>
-              }
-            </Box>
+              <>
+                <img src={AppLogo} width={125} height={37} />
+              </>
+            }
+          </Box>
         </Box>
       </Drawer>
       <Outlet />

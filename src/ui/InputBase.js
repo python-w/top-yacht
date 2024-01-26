@@ -2,10 +2,11 @@ import { styled } from "@mui/material/styles";
 import InputBase from '@mui/material/InputBase';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  fontFamily: 'Hellix',
+  fontSize: '16px',
   color: 'inherit',
   width: '100%',
   height: 40,
-  fontFamily: 'Hellix',
   '& .MuiInputBase-input': {
     backgroundColor: "#fff",
     padding: theme.spacing(1, 0, 1, 2),

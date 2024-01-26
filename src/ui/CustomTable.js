@@ -1,11 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import styled from "styled-components"
 
 const TableOuter = styled.div`
-    width: 100%;
-    overflow-x: auto;
-    padding: 16px 24px;
-    padding-top: 0;
+    padding: 0 24px 12px 24px;
     border-radius: 16px;
     background: #F1F7F9;
 `
@@ -17,6 +13,8 @@ const Table = styled.table`
         text-align: left;
         th{
             padding: 10px 24px;
+            font-size: 14px;
+            text-transform: uppercase;
         }
     }
     tbody{
@@ -28,8 +26,20 @@ const Table = styled.table`
             }
         }
         td{
+            font-weight: 500;
             padding: 10px 24px;
             background: #fff;
+            width: 25%;
+            div{
+                display: flex;
+                align-items:center;
+                &.react-international-phone-input-container{
+                    width: 100%;
+                }
+                img{
+                    margin-right: 12px;
+                }
+            }
             &:first-child{
                 border-top-left-radius: 48px;
                 border-bottom-left-radius: 48px;
@@ -42,7 +52,7 @@ const Table = styled.table`
     }
 `
 
-export default function CustomTable({ headers, data }) {
+export default function CustomTable({ headers, children }) {
     return (
         <TableOuter>
             <Table>
@@ -53,15 +63,7 @@ export default function CustomTable({ headers, data }) {
                         ))}
                     </tr>
                 </thead>
-                <tbody>
-                    {data.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
-                            {row.map((cell, cellIndex) => (
-                                <td key={cellIndex}><div>{cell}</div></td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
+                {children}
             </Table>
         </TableOuter>
     )

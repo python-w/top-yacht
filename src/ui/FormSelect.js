@@ -6,8 +6,8 @@ import styled from "styled-components";
 const StyledSelect = styled(Select)`
     &.css-xwomp5-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
     font-family: inherit;
-    font-size: inherit;
-     width: 100%;
+    font-size: 16px;
+    width: 100%;
     border-radius: 12px;
     border: 1px solid var(--border-color);
     height: 41px;

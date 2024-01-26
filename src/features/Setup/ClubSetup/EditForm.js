@@ -7,7 +7,8 @@ import CustomPhoneInput from '../../../ui/PhoneInput'
 import FormSectionTitle from '../../../ui/FormSectionTitle'
 import ContactsTableEditMode from '../../../ui/ContactsTableEditMode'
 
-export default function EditForm() {
+export default function EditForm({ isEditMode }) {
+
     //Phone Inputs
     const [phones, setPhones] = useState(["123-456-7890", "123-456-7890"]);
     const [sailingMPhone, setSMPhone] = useState("123-456-7890");
@@ -27,9 +28,9 @@ export default function EditForm() {
     const headers = ["Name", "Role", "Phone #", "Email Address"];
 
     const [data, setData] = useState([
-        { name: 'John Doe', role: 'Admin', phone: '123-456-7890', email: 'john@example.com' },
-        { name: 'Jane Smith', role: 'Editor', phone: '123-456-7890', email: 'jane@example.com' },
-        { name: 'John Doe', role: 'Member', phone: '123-456-7890', email: 'john@example.com' }
+        { name: 'John Doe', role: 'Admin', phone: '+1 (234) 567-890', email: 'john@example.com' },
+        { name: 'Jane Smith', role: 'Admin', phone: '+1 (234) 567-890', email: 'jane@example.com' },
+        { name: 'Oliver Simp', role: 'Admin', phone: '+1 (234) 567-890', email: 'oliver@example.com' }
     ]);
 
     //Update Phone
@@ -46,7 +47,6 @@ export default function EditForm() {
         const newData = [...data];
         newData[rowIndex].role = newRole;
         setData(newData);
-        console.log(newData)
     };
 
     //Remove Row
@@ -54,14 +54,13 @@ export default function EditForm() {
         setData(prevData => {
             const newData = [...prevData];
             newData.splice(rowIndex, 1);
-            console.log(newData);
             return newData;
         });
     };
 
     //Add row
     const handleAddRow = () => {
-        const newRow = { name: '', role: '', phone: '', email: '' };
+        const newRow = { name: '', role: 'Member', phone: '', email: '' };
         setData([...data, newRow]);
     };
     return (
@@ -130,9 +129,9 @@ export default function EditForm() {
                     <StyledInputBase id="clubName" placeholder="e.g abc@email.com" />
                 </Grid>
             </GridRow>
-            <Divider />
+            <Divider sx={{ my: 4 }} />
             <FormSectionTitle>Other Contacts</FormSectionTitle>
-            <ContactsTableEditMode headers={headers} data={data} onInputChange={handleInputChange} onRowRemove={handleRowRemove} onAddRow={handleAddRow} onRoleChange={handleRoleChange} />
+            <ContactsTableEditMode isEditMode={isEditMode} headers={headers} data={data} onInputChange={handleInputChange} onRowRemove={handleRowRemove} onAddRow={handleAddRow} onRoleChange={handleRoleChange} />
         </>
     )
 }

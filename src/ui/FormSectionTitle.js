@@ -8,7 +8,7 @@ const SectionTitle = styled.div`
     letter-spacing: 1.8px;
     text-transform: uppercase;
     color: var(--primary-color);
-    padding: 32px 0;
+    margin-bottom: 32px;
 `
 
 export default function FormSectionTitle({ children }) {
