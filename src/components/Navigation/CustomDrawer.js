@@ -165,7 +165,6 @@ const MiniDrawer = () => {
 
   function CheckIfActiveChild(menuItemChild) {
     const location = useLocation();
-    console.log(menuItemChild.path, menuItemChild.path === location.pathname)
     return menuItemChild.path === location.pathname;
   }
 
@@ -282,7 +281,17 @@ const MiniDrawer = () => {
                         </ListItem>
                       ))}
                     </List>
-                    <Divider sx={{ mr: is4KScreen ? get4k(8) : 1, ml: is4KScreen ? get4k(32) : 4, justifyContent: "center", my: is4KScreen ? get4k(20) : "20px", backgroundColor: "rgba(255,255,255,0.2)" }} />
+                    {index !== menuItems.length - 1 && (
+                      <Divider
+                        sx={{
+                          mr: is4KScreen ? get4k(8) : 1,
+                          ml: is4KScreen ? get4k(32) : 4,
+                          justifyContent: "center",
+                          my: is4KScreen ? get4k(20) : "20px",
+                          backgroundColor: "rgba(255,255,255,0.2)"
+                        }}
+                      />
+                    )}
                   </>
                 ) : (
                   ""
@@ -290,13 +299,13 @@ const MiniDrawer = () => {
               </ListItem>
             ))}
           </List>
-          <Divider sx={{ mx: 2, mt: 'auto' }} />
-          <Box sx={{ width: '100%', height: 84, display: 'flex', alignItems: 'center', padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, paddingBottom: 4, position: 'relative', justifyContent: !isDrawerOpen ? 'center' : 'flex-start' }}>
+          <Divider sx={{ mx: 2, mt: 2 }} />
+          <Box sx={{ width: '100%', height: 84, display: 'flex', alignItems: 'center', padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, my: 2, position: 'relative', justifyContent: !isDrawerOpen ? 'center' : 'flex-start' }}>
             {!isDrawerOpen ?
-              <img src={AppLogoIcon} width={25} height={52} />
+              <img src={AppLogoIcon} width={25} height={52} alt="app logo" />
               :
               <>
-                <img src={AppLogo} width={125} height={37} />
+                <img src={AppLogo} width={125} height={37} alt="app logo" />
               </>
             }
           </Box>

@@ -24,9 +24,9 @@ const ClubSetup = () => {
         ...theme.mixins.toolbar,
     }));
     return (
-        <Box className="main_view" sx={{ flexGrow: 1, p: 3, pr: 0 }}>
+        <Box className="main_view">
             <DrawerHeader />
-            <Box className="page_outer" sx={{ backgroundColor: "rgba(199, 219, 229, 0.25)", borderRadius: "32px", overflow: "hidden" }}>
+            <Box className="page_outer">
                 <PageHeader title="Club Setup" hasBtn={true} icon={isEditMode ? <SaveOutlinedIcon /> : <CreateOutlinedIcon />} btnText={isEditMode ? "Save Details" : 'Edit Details'} handlePageView={handlePageView} />
                 <PageBody>
                     {isEditMode ?

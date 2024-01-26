@@ -35,31 +35,3 @@
   font-display: swap;
   src: local(), url('../src/fonts/Hellix-Bold.woff2');
 }
-
-.navigationDrawer .MuiTypography-root {
-  font-weight: 600;
-  letter-spacing: 3.2px;
-}
-
-.navigationDrawer .MuiList-root .MuiList-root .MuiTypography-root {
-  font-weight: 600;
-  letter-spacing: 0;
-}
-
-.navigationDrawer .MuiList-root .MuiDivider-root {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.main_view {
-  width: 100%;
-  flex-grow: 1;
-  height: 100vh;
-}
-
-.page_outer {
-  height: calc(100% - 100px);
-}
-.page-container {
-  height: calc(100% - 76px);
-  overflow-y: auto;
-}

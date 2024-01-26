@@ -25,6 +25,24 @@ const CustomTheme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        '*': {
+          scrollbarColor: 'rgba(29, 81, 141, 0.7) transparent',
+          scrollbarWidth: 'thin',
+          "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
+            borderRadius: 0,
+            width: '4px',
+          },
+          "&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track": {
+            background: 'transparent',
+            boxShadow: 'none',
+            borderRadius: "5px",
+            margin: 0,
+          },
+          "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+            borderRadius: 10,
+            backgroundColor: "rgba(29, 81, 141, 0.7)",
+          },
+        },
         body: {
           fontFamily: 'Hellix', // Set the default font family for the body
           fontWeight: 400,
@@ -33,29 +51,23 @@ const CustomTheme = createTheme({
           backgroundImage: `url(${BodyBg})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          color: 'var(--body-text-color)'
-        },
-        "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
-          borderRadius: 10,
-          height: 50,
-          width: '8px',
-          padding: 8,
-        },
-        "&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track": {
-          webkitBoxShadow: "inset 0 0 2px rgba(0,0,0,0.3)",
-          borderRadius: "5px",
-          marginTop: "5px",
-          marginBottom: "5px",
-        },
-        "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
-          borderRadius: 10,
-          backgroundColor: "rgba(29, 81, 141, 0.7)",
-          minHeight: 24,
-          // border: "3px solid rgba(29, 81, 141, 0.5)",
-          marginRight: 10,
+          color: 'var(--body-text-color)',
         },
         p: {
           marginTop: 0
+        },
+        '.navigationDrawer': {
+          '& .MuiTypography-root': {
+            fontWeight: 600,
+            letterSpacing: '3.2px',
+          },
+          '& .MuiList-root .MuiList-root .MuiTypography-root': {
+            fontWeight: 600,
+            letterSpacing: 0,
+          },
+          '& .MuiList-root .MuiDivider-root': {
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          },
         },
         '.MuiPopover-root .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper': {
           borderRadius: '8px',
@@ -79,6 +91,29 @@ const CustomTheme = createTheme({
         '.MuiPopover-root .css-1pvtjvc-MuiList-root-MuiMenu-list': {
           padding: '8px',
         },
+        '.main_view': {
+          width: '100%',
+          flexGrow: 1,
+          height: '100vh',
+          padding: '24px 0',
+        },
+        '.page_outer': {
+          height: 'calc(100% - 64px)',
+          backgroundColor: 'rgba(199, 219, 229, 0.25)',
+          borderRadius: '32px',
+          overflow: 'hidden',
+        },
+        '.page_container': {
+          height: 'calc(100% - 76px)',
+          overflowY: 'auto',
+          background: '#fff',
+          '&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track': {
+            background: '#fff',
+          },
+        },
+        '.page_inner': {
+          padding: '24px 32px'
+        }
       },
     },
     MuiTypography: {
