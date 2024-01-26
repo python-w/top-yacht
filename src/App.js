@@ -10,7 +10,7 @@ function App() {
   return (
     <ThemeProvider theme={CustomTheme}>
       <CssBaseline />
-      <Container sx={{ [CustomTheme.breakpoints.up("sm")]: { maxWidth: '100%' } }}>
+      <Container sx={{ [CustomTheme.breakpoints.up("xs")]: { maxWidth: '100%', overflow: 'hidden' } }}>
         <Box className="dashboard_view" sx={{ display: "flex" }}>
           <RouterProvider router={TYRouter} />
         </Box>

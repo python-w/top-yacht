@@ -13,8 +13,17 @@ import StyledInputBase from "../../ui/InputBase";
 import DrawerIcon from "../../images/menu-icon.svg";
 
 
-const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleDrawerToggle }) => {
+const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onBelowLgBreakpoint, onhandleDrawerToggle }) => {
   const theme = useTheme();
+  const DrawerHeader = styled("div")(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    // ...theme.mixins.toolbar,
+    minHeight: 80
+  }));
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -36,7 +45,7 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleD
     },
     marginLeft: 0,
     width: "100%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("xs")]: {
       marginLeft: theme.spacing(1),
       width: "auto",
     },
@@ -54,19 +63,20 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleD
   }));
 
   return (
-    <MuiAppBar position="fixed" open={onDrawerOpen} sx={{
-      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: onDrawerOpen ? `calc((100% - ${ondrawerWidth}) * 1px)` : `calc(100% - ${theme.spacing(8)} + 1px)`
+    <MuiAppBar position="fixed" open={onDrawerOpen} sx={{zIndex: -1,
+      marginLeft: onDrawerOpen ? ondrawerWidth : '', width: !onBelowXlBreakpoint ? onDrawerOpen ? `calc(100% - ${ondrawerWidth}px)` : `calc(100% - ${theme.spacing(13.125)} + 1px)` : `100%`
     }}>
-      <Toolbar sx={{justifyContent: "flex-end"}}>
+      <Toolbar sx={{justifyContent: "flex-end", [theme.breakpoints.up("xs")]: {minHeight: 80} }}>
         {onBelowXlBreakpoint ? <IconButton disableRipple onClick={onhandleDrawerToggle} className="navDrawerMobileBtn" sx={{ color: "#fff", height: 120, padding: 0, width: 28, height: 28, borderRadius: 0, overflow: "hidden", marginRight: 'auto' }}><img alt="Drawer Button" src={DrawerIcon} style={{ position: "absolute", width: "100%", height: "100%" }} /></IconButton> : ''
         }
         <Search sx={{
-          [theme.breakpoints.up("sm")]: {
+          [theme.breakpoints.up("md")]: {
             width: 360,
-            "&:focus": {
-              width: 380,
-            }
-          }}}>
+          },
+          [theme.breakpoints.down("md")]: {
+            width: 298,
+          }
+          }}>
           <StyledInputBase
             placeholder="Search"
             inputProps={{ "aria-label": "search" }}
@@ -103,6 +113,7 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleD
             <IconButton disableRipple onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src={ProfileMember} variant="square" sx={{ borderRadius: "8px" }} />
               <Box sx={{ display: "flex", alignItems: "center" }}>
+                {!onBelowLgBreakpoint ? 
                 <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: 1.5 }}>
                   <Typography variant="h6" sx={{ color: "#356DAD", fontSize: 16 }}>
                     Chris
@@ -111,6 +122,7 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onhandleD
                     Senior Member
                   </Typography>
                 </Box>
+                : '' }
                 <ChevronLeftIcon sx={{ transform: `rotate(-90deg)`, color: "#848484", marginLeft: 1 }} />
               </Box>
             </IconButton>

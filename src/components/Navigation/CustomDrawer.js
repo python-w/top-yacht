@@ -46,9 +46,12 @@ const closedMixin = (theme) => ({
   [theme.breakpoints.up("xxxl")]: {
     borderRadius: `0 ${get4k(40)} ${get4k(40)} 0`,
   },
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("xl")]: {
     width: `calc(${theme.spacing(15)} + 1px)`,
   },
+  [theme.breakpoints.down("xl")]: {
+    width: 0,
+  }
 });
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" })(({ theme, open }) => ({
@@ -94,15 +97,18 @@ const MiniDrawer = () => {
   const theme = useTheme();
 
   const isBelowXlBreakpoint = useMediaQuery(theme.breakpoints.down('xl'));
-  const is4KScreen = useMediaQuery(theme.breakpoints.down('xxxl'));
+  const isBelowLgBreakpoint = useMediaQuery(theme.breakpoints.down('lg'));
+  const is4KScreen = useMediaQuery(theme.breakpoints.up('xxxl'));
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
-    padding: theme.spacing(0, is4KScreen ? get4k(2.5) : 2.5),
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    // ...theme.mixins.toolbar,
+    minHeight: 80
   }));
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -149,7 +155,7 @@ const MiniDrawer = () => {
       ],
       icon: CSetupSvg,
     },
-    { menu: "Settings", children: [{ label: "Event Setup", path: "/event-setup" }], icon: CConfigurationSvg },
+    { menu: "Settings", children: [{ label: "Event Setup", path: "/club-setup-view-details" }], icon: CConfigurationSvg },
   ];
 
   function CheckIfActive(menuItem) {
@@ -165,7 +171,7 @@ const MiniDrawer = () => {
 
   return (
     <>
-      <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)}>
+      <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)} sx={{ position: isBelowXlBreakpoint ? 'absolute' : 'relative' }}>
         {!isBelowXlBreakpoint ?
           <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden" }}>
             <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
@@ -173,12 +179,13 @@ const MiniDrawer = () => {
           </IconButton>
           : ''}
         <Box sx={{ backgroundImage: 'linear-gradient(#356DAD, transparent)', backgroundColor: "#1D518D", color: "#fff", border: 'none', width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0", position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', overflowY: !isDrawerOpen ? 'hidden' : 'visible' }}>
-          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onhandleDrawerToggle={handleDrawerToggle} />
+          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onBelowLgBreakpoint={isBelowLgBreakpoint} onhandleDrawerToggle={handleDrawerToggle} />
           <DrawerHeader className="drawerHeader" sx={{
-            [theme.breakpoints.up("sm")]: {
+            [theme.breakpoints.up("xs")]: {
               minHeight: 84,
               padding: !isDrawerOpen ? '0 12px' : '0 32px',
-              zIndex: 1101
+              zIndex: 1101,
+              justifyContent: 'flex-start'
             },
           }}>
             <Box sx={{ backgroundColor: "white", width: isDrawerOpen ? 232 : 88, height: 84, borderRadius: isDrawerOpen ? '0 0 30px 30px' : '0 0 25px 25px', display: 'flex', alignItems: 'center', padding: 2, position: 'relative', transition: theme.transitions.create("border-radius", { easing: theme.transitions.easing.sharp, duration: theme.transitions.duration.enteringScreen }) }}>
@@ -193,7 +200,7 @@ const MiniDrawer = () => {
                 </>
               }
             </Box>
-            {isDrawerOpen ?
+            {isBelowXlBreakpoint && isDrawerOpen ?
               <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", height: 120, padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden" }}>
                 <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24 }} />
               </IconButton>
