@@ -97,15 +97,18 @@ const MiniDrawer = () => {
   const theme = useTheme();
 
   const isBelowXlBreakpoint = useMediaQuery(theme.breakpoints.down('xl'));
-  const is4KScreen = useMediaQuery(theme.breakpoints.down('xxxl'));
+  const isBelowLgBreakpoint = useMediaQuery(theme.breakpoints.down('lg'));
+  const is4KScreen = useMediaQuery(theme.breakpoints.up('xxxl'));
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",
-    padding: theme.spacing(0, is4KScreen ? get4k(2.5) : 2.5),
+    justifyContent: "flex-end",
+    padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    // ...theme.mixins.toolbar,
+    minHeight: 80
   }));
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -176,12 +179,13 @@ const MiniDrawer = () => {
           </IconButton>
           : '' }
         <Box sx={{backgroundImage: 'linear-gradient(#356DAD, transparent)',backgroundColor: "#1D518D",color: "#fff",border: 'none', width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0",position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', overflowY: !isDrawerOpen ? 'hidden' : 'visible'}}>
-          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onhandleDrawerToggle={handleDrawerToggle}/>
+          <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onBelowLgBreakpoint={isBelowLgBreakpoint} onhandleDrawerToggle={handleDrawerToggle}/>
           <DrawerHeader className="drawerHeader" sx={{
-            [theme.breakpoints.up("sm")]: {
+            [theme.breakpoints.up("xs")]: {
               minHeight: 84,
               padding: !isDrawerOpen ? '0 12px' : '0 32px',
-              zIndex: 1101
+              zIndex: 1101,
+              justifyContent: 'flex-start'
             },
           }}>
             <Box sx={{backgroundColor:"white", width: isDrawerOpen? 232 : 88,height: 84, borderRadius: isDrawerOpen ? '0 0 30px 30px' : '0 0 25px 25px', display: 'flex', alignItems: 'center', padding: 2, position: 'relative',   transition: theme.transitions.create("border-radius", {easing: theme.transitions.easing.sharp,duration: theme.transitions.duration.enteringScreen})}}>

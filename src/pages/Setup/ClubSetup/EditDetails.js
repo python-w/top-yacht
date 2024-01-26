@@ -12,10 +12,11 @@ const ClubSetupEditDetails = () => {
     justifyContent: "flex-end",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
+    // ...theme.mixins.toolbar,
+    minHeight: 80
   }));
   return (
-    <Box className="main_view" sx={{ flexGrow: 1, py: 3, pl: [theme.breakpoints.up("xs")] ? 0 : 3, pr: 0 }}>
+    <Box className="main_view" sx={{ pl: [theme.breakpoints.up("xs")] ? 0 : 3, pr: 0 }}>
       <DrawerHeader />
       <Box className="page_outer" sx={{ backgroundColor: "rgba(199, 219, 229, 0.25)", borderRadius: "32px", overflow: "hidden" }}>
         <PageHeader title="Club Setup" hasBtn={true} btnText="Save Details" />

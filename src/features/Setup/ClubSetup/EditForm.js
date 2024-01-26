@@ -61,7 +61,7 @@ export default function EditForm() {
 
     //Add row
     const handleAddRow = () => {
-        const newRow = { name: '', role: '', phone: '', email: '' };
+        const newRow = { name: '', role: 'Admin', phone: '', email: '' };
         setData([...data, newRow]);
     };
     return (
