@@ -1,22 +1,7 @@
-import styled from "styled-components";
+import { FormLabel, Typography } from '@mui/material';
 
-const Label = styled.label`
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--body-text-color);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-
-  span {
-    color: red;
-    display: inline-block;
-    margin-left: 8px;
-  }
-`
-
-export default function FormLabel({ children, isRequired, htmlFor }) {
+export default function FormLabelComponent({ children, isRequired, htmlFor }) {
   return (
-    <Label htmlFor={htmlFor}>{children}{isRequired && <span>*</span>}</Label>
+    <FormLabel htmlFor={htmlFor}>{children}{isRequired && <Typography className='required' component="span">*</Typography>}</FormLabel>
   )
 }

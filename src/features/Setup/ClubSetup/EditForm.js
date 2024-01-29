@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { GridRow } from '../../../ui/GridRow'
-import { Box, Checkbox, Divider, FormControlLabel, Grid, Switch, Typography } from '@mui/material'
-import FormLabel from '../../../ui/FormLabel'
+import { Box, Checkbox, Divider, FormControlLabel, Grid, Switch, Typography, FormLabel } from '@mui/material'
 import StyledInputBase from '../../../ui/InputBase'
 import CustomPhoneInput from '../../../ui/PhoneInput'
 import FormSectionTitle from '../../../ui/FormSectionTitle'
@@ -69,22 +68,22 @@ export default function EditForm({ isEditMode }) {
         <>
             <GridRow container spacing={4} justifyContent="space-between">
                 <Grid item md={3}>
-                    <FormLabel htmlFor="clubName" isRequired={true}>
-                        Club Name
+                    <FormLabel htmlFor="clubName">
+                        Club Name<Typography className='required' component="span">*</Typography>
                     </FormLabel>
                     <StyledInputBase id="clubName" value={clubName} onChange={(e) => setClubName(e.target.value)} />
                 </Grid>
                 <Grid item>
-                    <FormLabel htmlFor="arch" isRequired={true}>
-                        Archive
+                    <FormLabel htmlFor="arch">
+                        Archive<Typography className='required' component="span">*</Typography>
                     </FormLabel>
                     <FormControlLabel control={<Switch defaultChecked />} label={<Typography sx={{ fontSize: "14px", fontWeight: 600 }}>Enabled</Typography>} />
                 </Grid>
             </GridRow>
             <GridRow container spacing={4}>
                 <Grid item md={3}>
-                    <FormLabel htmlFor="clubType" isRequired={true}>
-                        Type
+                    <FormLabel htmlFor="clubType">
+                        Type<Typography className='required' component="span">*</Typography>
                     </FormLabel>
                     <Box xs={{ gap: "25px" }}>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="KB" />
@@ -93,16 +92,16 @@ export default function EditForm({ isEditMode }) {
                     </Box>
                 </Grid>
                 <Grid item md={3}>
-                    <FormLabel htmlFor="clubType" isRequired={true}>
-                        Staff
+                    <FormLabel htmlFor="clubType">
+                        Staff<Typography className='required' component="span">*</Typography>
                     </FormLabel>
                     <Box xs={{ gap: "25px" }}>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Fully Volunteer Run Club" />
                     </Box>
                 </Grid>
                 <Grid item md={3}>
-                    <FormLabel htmlFor="clubType" isRequired={true}>
-                        Source of Entrants
+                    <FormLabel htmlFor="clubType">
+                        Source of Entrants<Typography className='required' component="span">*</Typography>
                     </FormLabel>
                     <Box xs={{ gap: "25px" }}>
                         <FormControlLabel control={<Checkbox defaultChecked />} label="TES" />
@@ -113,20 +112,20 @@ export default function EditForm({ isEditMode }) {
             </GridRow>
             <GridRow container spacing={4}>
                 <Grid item md={3}>
-                    <FormLabel isRequired={true}>Sailing Manager Contact</FormLabel>
-                    <CustomPhoneInput defaultCountry="us" isRequired={true} value={sailingMPhone} onChange={(value) => handleSMPhoneChange(value)} />
+                    <FormLabel>Sailing Manager Contact<Typography className='required' component="span">*</Typography></FormLabel>
+                    <CustomPhoneInput defaultCountry="us" value={sailingMPhone} onChange={(value) => handleSMPhoneChange(value)} />
                 </Grid>
             </GridRow>
             <GridRow container spacing={4}>
                 {phones.map((phone, index) => (
                     <Grid item md={3} key={index}>
-                        <FormLabel isRequired={true}>{labels[index]}</FormLabel>
+                        <FormLabel>{labels[index]}<Typography className='required' component="span">*</Typography></FormLabel>
                         <CustomPhoneInput key={index} defaultCountry="us" value={phone} onChange={(value) => handlePhoneChange(value, index)} />
                     </Grid>
                 ))}
                 <Grid item md={3}>
-                    <FormLabel htmlFor="clubName" isRequired={true}>
-                        Email Address
+                    <FormLabel htmlFor="clubName">
+                        Email Address<Typography className='required' component="span">*</Typography>
                     </FormLabel>
                     <StyledInputBase id="clubName" placeholder="e.g abc@email.com" />
                 </Grid>

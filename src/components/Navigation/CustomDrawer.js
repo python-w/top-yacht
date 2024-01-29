@@ -11,7 +11,7 @@ import CEntrantsSvg from "../../images/Entrants.svg";
 import CSetupSvg from "../../images/SetUp.svg";
 import CConfigurationSvg from "../../images/Configuration.svg";
 import CstAppbar from "./CstAppbar";
-import { get4k } from "../../utils/Helpers";
+import { get4k, mediaQueries } from "../../utils/Helpers";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { styled as styledC } from "styled-components";
 import ClubLogo from "../../images/logo.svg";
@@ -91,11 +91,16 @@ const LogoBgStyled = styledC.div`
   height: 100%;
   z-index: 1;
   transform: rotate(180deg) scaleX(-1);
+  top: -1px;
+  @media (min-width: ${mediaQueries.xxxl}px) {
+    right: ${get4k(-58)};
+    width: ${get4k(86)};
+    top: ${get4k(-1)}
+  }
   & .logoBg {
     height: 100%;
     width: auto;
   },
-
 `;
 
 const MiniDrawer = () => {
