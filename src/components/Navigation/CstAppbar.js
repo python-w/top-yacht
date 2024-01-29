@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { styled, useTheme, alpha } from "@mui/material/styles";
 import { Box, Toolbar, IconButton, Typography, Menu, MenuItem, Tooltip, Avatar, useMediaQuery } from "@mui/material";
 import MuiAppBar from "@mui/material/AppBar";
+import { get4k } from "../../utils/Helpers";
 import ProfileMember from "../../images/member.png";
 import CPhoneSvg from '../../images/Phone.svg';
 import CGiftSvg from '../../images/Gift.svg';
@@ -71,9 +72,12 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onBelowLg
       marginLeft: onDrawerOpen ? ondrawerWidth : '', width: !onBelowXlBreakpoint ? onDrawerOpen ? `calc(100% - ${ondrawerWidth}px)` : `calc(100% - ${theme.spacing(13.125)} + 1px)` : `100%`
     }}>
       <Toolbar sx={{ justifyContent: "flex-end", [theme.breakpoints.up("xs")]: { minHeight: 80 } }}>
-        {onBelowXlBreakpoint ? <IconButton disableRipple onClick={onhandleDrawerToggle} className="navDrawerMobileBtn" sx={{ color: "#fff", height: 120, padding: 0, width: 28, height: 28, borderRadius: 0, overflow: "hidden", marginRight: 'auto' }}><img alt="Drawer Button" src={DrawerIcon} style={{ position: "absolute", width: "100%", height: "100%" }} /></IconButton> : ''
+        {onBelowXlBreakpoint ? <IconButton disableRipple onClick={onhandleDrawerToggle} className="navDrawerMobileBtn" sx={{ color: "#fff", padding: 0, width: 28, height: 28, borderRadius: 0, overflow: "hidden", marginRight: 'auto', [theme.breakpoints.up("xxxl")]: { width: get4k(28), height: get4k(28)} }}><img alt="Drawer Button" src={DrawerIcon} style={{ position: "absolute", width: "100%", height: "100%" }} /></IconButton> : ''
         }
         <Search sx={{
+          [theme.breakpoints.up("xxxl")]: {
+            width: get4k(360)
+          },
           [theme.breakpoints.up("md")]: {
             width: 360,
           },
@@ -97,42 +101,42 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onBelowLg
             <img src={CSearchIcon} alt="" width={20} height={20} />
           </SearchIconWrapper>
         </Search>
-        <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD" }}>
+        <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD", [theme.breakpoints.up("xxxl")]: {marginLeft: get4k(1.5)} }}>
           <Tooltip title="Open">
             <img src={CPhoneSvg} alt="" />
           </Tooltip>
         </IconButton>
-        <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD" }}>
+        <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD", [theme.breakpoints.up("xxxl")]: {marginLeft: get4k(1.5)} }}>
           <Tooltip title="Open2">
             <img src={CGiftSvg} alt="" />
           </Tooltip>
         </IconButton>
-        <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD" }}>
+        <IconButton disableRipple sx={{ backgroundColor: "#F5F9FA", borderRadius: "8px", marginLeft: 1.5, color: "#356DAD", [theme.breakpoints.up("xxxl")]: {marginLeft: get4k(1.5)} }}>
           <Tooltip title="Open3">
             <img src={CComputerSvg} alt="" />
           </Tooltip>
         </IconButton>
-        <Box sx={{ flexGrow: 0, paddingLeft: 3 }}>
+        <Box sx={{ flexGrow: 0, paddingLeft: 3, [theme.breakpoints.up("xxxl")]: {paddingLeft: get4k(24)} }}>
           <Tooltip title="Open settings">
             <IconButton disableRipple onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar alt="Remy Sharp" src={ProfileMember} variant="square" sx={{ borderRadius: "8px" }} />
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 {!onBelowLgBreakpoint ?
                   <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: 1.5 }}>
-                    <Typography variant="h6" sx={{ color: "#356DAD", fontSize: 16 }}>
+                    <Typography variant="h6" sx={{ color: "#356DAD", fontSize: 16, [theme.breakpoints.up("xxxl")]: {fontSize: get4k(16)} }}>
                       Chris
                     </Typography>
-                    <Typography variant="p" sx={{ fontSize: "14px", fontWeight: 600, color: "#848484" }}>
+                    <Typography variant="p" sx={{ fontSize: 14, fontWeight: 600, color: "#848484", [theme.breakpoints.up("xxxl")]: {fontSize: get4k(14)} }}>
                       Senior Member
                     </Typography>
                   </Box>
                   : ''}
-                <ChevronLeftIcon sx={{ transform: `rotate(-90deg)`, color: "#848484", marginLeft: 1 }} />
+                <ChevronLeftIcon sx={{ transform: `rotate(-90deg)`, color: "#848484", marginLeft: 1, [theme.breakpoints.up("xxxl")]: {marginLeft: get4k(8)} }} />
               </Box>
             </IconButton>
           </Tooltip>
           <Menu
-            sx={{ mt: "45px" }}
+            sx={{ mt: "45px", [theme.breakpoints.up("xxxl")]: {mt: get4k(45)} }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{
