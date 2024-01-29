@@ -6,6 +6,7 @@ import PageBody from "../ui/PageBody";
 import { useState } from "react";
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import SaveOutlinedIcon from '@mui/icons-material/SaveOutlined';
+import { get4k } from "../utils/Helpers";
 
 
 const ClubSetup = () => {
@@ -21,7 +22,11 @@ const ClubSetup = () => {
         justifyContent: "flex-end",
         padding: theme.spacing(0, 1),
         // necessary for content to be below app bar
-        ...theme.mixins.toolbar,
+        // ...theme.mixins.toolbar,
+        minHeight: 80,
+        [theme.breakpoints.up("xxxl")]: {
+            minHeight: get4k(80)
+        }
     }));
     return (
         <Box className="main_view">

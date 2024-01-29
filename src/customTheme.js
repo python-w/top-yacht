@@ -60,11 +60,11 @@ const CustomTheme = createTheme({
           fontFamily: "Hellix, sans-serif",
           fontWeight: 400,
           fontSize: 18,
-          [theme.breakpoints.up("xxxl")]: {
-            fontSize: get4k(18),
-          },
           [theme.breakpoints.up("xl")]: {
             fontSize: "18px",
+          },
+          [theme.breakpoints.up("xxxl")]: {
+            fontSize: get4k(18),
           },
           [theme.breakpoints.down("xl")]: {
             fontSize: "16px",
@@ -74,9 +74,6 @@ const CustomTheme = createTheme({
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           color: "var(--body-text-color)",
-        },
-        p: {
-          marginTop: 0,
         },
         button: {
           fontFamily: "Hellix, sans-serif",
@@ -138,22 +135,22 @@ const CustomTheme = createTheme({
           width: "100%",
           flexGrow: 1,
           height: "100vh",
-          padding: "24px 0",
+          padding: '0 0 24px 0',
           [theme.breakpoints.up("xxxl")]: {
-            padding: `${get4k(24)} 0`,
+            padding: `0 0 ${get4k(24)} 0`,
           },
         },
         ".page_outer": {
-          height: "calc(100% - 64px)",
+          height: "calc(100% - 76px)",
           backgroundColor: "rgba(199, 219, 229, 0.25)",
           borderRadius: "32px",
           overflow: "hidden",
-          [theme.breakpoints.up("xxxl")]: {
-            height: `calc(100% - ${get4k(46)})`,
-            borderRadius: get4k(32),
-          },
-          [theme.breakpoints.down("md")]: {
+          [theme.breakpoints.up("md")]: {
             borderRadius: "16px",
+          },
+          [theme.breakpoints.up("xxxl")]: {
+            height: `calc(100% - ${get4k(76)})`,
+            borderRadius: get4k(32),
           },
         },
         ".page_container": {
@@ -220,9 +217,32 @@ const CustomTheme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: "none",
-          letterSpacing: 0,
-          height: "calc(var(--field-height) * 1px)",
+          fontStyle: 'normal',
+          fontWeight: 600,
+          lineHeight: 'normal',
+          textTransform: 'uppercase',
+          background: 'transparent',
+          borderRadius: '36px',
+          boxShadow: 'none',
+          border: '1px solid var(--primary-color)',
+          cursor: 'pointer',
+          display: "inline-flex",
+          alignItems: 'center',
+          "@media (min-width: 0px)": {
+            fontSize: 12,
+            padding: '8px 10px',
+          },
+          "@media (min-width: 768px)": {
+            fontSize: 14,
+            height: 40,
+            padding: '12px 20px',
+          },
+          "@media (min-width: 2201px)": {
+            fontSize: get4k(14),
+            padding: `${get4k(12)} ${get4k(20)}`,
+            height: get4k(40),
+            borderRadius: get4k(36)
+          },
         },
       },
     },

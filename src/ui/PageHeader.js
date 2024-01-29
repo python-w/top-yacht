@@ -2,6 +2,7 @@ import { Box, useTheme } from "@mui/material";
 import unionSvg from '../images/union.svg';
 import styled from "styled-components";
 import ButtonPrimary from "./ButtonPrimary";
+import { get4k } from "../utils/Helpers";
 
 
 const StyledBox = styled(Box)`
@@ -19,12 +20,17 @@ export default function PageHeader({ title, btnText, icon, hasBtn, handlePageVie
     const theme = useTheme();
     return (
         <Box sx={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: hasBtn && '32px', [theme.breakpoints.down("sm")]: {
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: hasBtn && '32px', [theme.breakpoints.up("xxxl")]: {paddingRight: hasBtn && get4k(32)},[theme.breakpoints.down("sm")]: {
                 paddingRight: hasBtn && '16px'
             }
         }}>
             <StyledBox component="span" sx={{
-                fontSize: '24px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--primary-color)', padding: '20px 32px', background: '#fff', display: 'inline-block', letterSpacing: '2.4px', [theme.breakpoints.down("sm")]: {
+                fontSize: '24px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--primary-color)', padding: '20px 32px', background: '#fff', display: 'inline-block', letterSpacing: '2.4px', 
+                [theme.breakpoints.up("xxxl")]: {
+                    fontSize: get4k(24),
+                    padding: `${get4k(20)} ${get4k(32)}`
+                },
+                [theme.breakpoints.down("sm")]: {
                     fontSize: '20px',
                     letterSpacing: 1,
                     padding: '10px 0 10px 20px',

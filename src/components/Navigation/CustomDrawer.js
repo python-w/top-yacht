@@ -43,15 +43,15 @@ const closedMixin = (theme) => ({
   }),
   overflow: "hidden",
   width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("xxxl")]: {
-    width: `calc(${get4k(theme.spacing(7))})`,
-    borderRadius: `0 ${get4k(40)} ${get4k(40)} 0`,
-  },
   [theme.breakpoints.up("xl")]: {
     width: `calc(${theme.spacing(15)} + 1px)`,
   },
   [theme.breakpoints.down("xl")]: {
     width: 0,
+  },
+  [theme.breakpoints.up("xxxl")]: {
+    width: get4k(120),
+    borderRadius: `0 ${get4k(40)} ${get4k(40)} 0`,
   },
 });
 
@@ -69,9 +69,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== "open" 
     ...closedMixin(theme),
     "& .MuiDrawer-paper": closedMixin(theme),
   }),
-  [theme.breakpoints.up("xxxl")]: {
-    width: get4k(drawerWidth)
-  }
 }));
 
 const StyledNavLink = styled(NavLink)`
@@ -119,6 +116,9 @@ const MiniDrawer = () => {
     // necessary for content to be below app bar
     // ...theme.mixins.toolbar,
     minHeight: 80,
+    [theme.breakpoints.up("xxxl")]: {
+      minHeight: get4k(80)
+    }
   }));
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -199,7 +199,7 @@ const MiniDrawer = () => {
         ) : (
           ""
         )}
-        <Box sx={{ backgroundImage: "linear-gradient(#356DAD, transparent)", backgroundColor: "#1D518D", color: "#fff", border: "none", width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0", position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflowY: !isDrawerOpen ? "hidden" : "visible" }}>
+        <Box sx={{ backgroundImage: "linear-gradient(#356DAD, transparent)", backgroundColor: "#1D518D", color: "#fff", border: "none", width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0", position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflowY: !isDrawerOpen ? "hidden" : "visible", [theme.breakpoints.up("xxxl")]: {width: `calc(100% - ${get4k(16)})`, borderRadius: `0 ${get4k(40)} ${get4k(40)} 0`} }}>
           <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onBelowLgBreakpoint={isBelowLgBreakpoint} onhandleDrawerToggle={handleDrawerToggle} />
           <DrawerHeader
             className="drawerHeader"
@@ -218,12 +218,12 @@ const MiniDrawer = () => {
           >
             <Box sx={{ backgroundColor: "white", width: isDrawerOpen ? 232 : 88, height: 84, borderRadius: isDrawerOpen ? "0 0 30px 30px" : "0 0 25px 25px", display: "flex", alignItems: "center", padding: 2, position: "relative", transition: theme.transitions.create("border-radius", { easing: theme.transitions.easing.sharp, duration: theme.transitions.duration.enteringScreen}), [theme.breakpoints.up("xxxl")]: {width: isDrawerOpen ? get4k(232) : get4k(88), height: get4k(84), borderRadius: isDrawerOpen ? `0 0 ${get4k(30)} ${get4k(30)}` : `0 0 ${get4k(25)} ${get4k(25)}`, padding: get4k(16)} }}>
               {!isDrawerOpen ? (
-                <img src={ClubLogoIcon} width={39} height={52} alt="" style={{[theme.breakpoints.up("xxxl")]: {width: get4k(39)} }} />
+                <img src={ClubLogoIcon} width={39} height={52} alt="Club Logo Icon" />
               ) : (
                 <>
-                  <img src={ClubLogo} width={204} height={52} alt="" />
+                  <img src={ClubLogo} width={204} height={52} alt="Club Logo" />
                   <LogoBgStyled>
-                    <img src={UnionBg} width={86} height={69} className="logoBg" alt="" />
+                    <img src={UnionBg} width={86} height={69} className="logoBg" alt="Logo Area Style" />
                   </LogoBgStyled>
                 </>
               )}
