@@ -4,6 +4,7 @@ const TableOuter = styled.div`
     padding: 0 24px 12px 24px;
     border-radius: 16px;
     background: #F1F7F9;
+    overflow-x: auto;
 `
 const Table = styled.table`
     width: 100%;

@@ -9,6 +9,8 @@ import ContactsTableEditMode from '../../../ui/ContactsTableEditMode'
 
 export default function EditForm({ isEditMode }) {
 
+    const [clubName, setClubName] = useState('Northstar Club')
+
     //Phone Inputs
     const [phones, setPhones] = useState(["123-456-7890", "123-456-7890"]);
     const [sailingMPhone, setSMPhone] = useState("123-456-7890");
@@ -70,7 +72,7 @@ export default function EditForm({ isEditMode }) {
                     <FormLabel htmlFor="clubName" isRequired={true}>
                         Club Name
                     </FormLabel>
-                    <StyledInputBase id="clubName" value="Northstar Club" />
+                    <StyledInputBase id="clubName" value={clubName} onChange={(e) => setClubName(e.target.value)} />
                 </Grid>
                 <Grid item>
                     <FormLabel htmlFor="arch" isRequired={true}>

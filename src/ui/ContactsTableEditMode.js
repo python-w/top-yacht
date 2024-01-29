@@ -1,6 +1,13 @@
 import styled from 'styled-components'
 import ContactsTable from './ContactsTable';
 
+const TableOuter = styled.div` 
+    border-radius: 16px;
+    background: #F1F7F9;
+`
+const BtnHolder = styled.div`
+    padding: 0 24px 24px;
+`
 const AddButton = styled.button`
     font-size: 14px;
     font-style: normal;
@@ -14,7 +21,6 @@ const AddButton = styled.button`
     background: #FFF;
     box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.07);
     padding: 12px 18px;
-    margin: 12px 0 ; 
     cursor: pointer;
 `
 
@@ -35,9 +41,11 @@ export default function ContactsTableEditMode({ headers, data, onInputChange, on
     };
 
     return (
-        <>
-            <ContactsTable headers={headers} data={data} isEditMode={isEditMode} handlePhoneChange={handlePhoneChange} onRowRemove={onRowRemove} handleRoleChange={handleRoleChange} options={options} />
-            <AddButton onClick={onAddRow}>Add additional Contacts</AddButton>
-        </>
+        <TableOuter>
+            <ContactsTable headers={headers} data={data} isEditMode={isEditMode} handlePhoneChange={handlePhoneChange} onRowRemove={onRowRemove} handleRoleChange={handleRoleChange} options={options} onInputChange={onInputChange} />
+            <BtnHolder>
+                <AddButton onClick={onAddRow}>Add additional Contacts</AddButton>
+            </BtnHolder>
+        </TableOuter>
     )
 }

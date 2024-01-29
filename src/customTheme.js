@@ -2,7 +2,6 @@ import { createTheme } from "@mui/material";
 import BodyBg from './images/body-bg.png';
 import { get4k } from "./utils/Helpers";
 
-
 const CustomTheme = createTheme({
   palette: {
     primary: {
@@ -11,6 +10,9 @@ const CustomTheme = createTheme({
     secondary: {
       main: '#42566C',
     },
+  },
+  typography: {
+    fontFamily: 'Hellix, sans-serif',
   },
   breakpoints: {
     values: {
@@ -31,11 +33,12 @@ const CustomTheme = createTheme({
           "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
             borderRadius: 0,
             width: '4px',
+            height: '4px',
           },
           "&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track": {
             background: 'transparent',
             boxShadow: 'none',
-            borderRadius: "5px",
+            borderRadius: "10px",
             margin: 0,
           },
           "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
@@ -44,7 +47,7 @@ const CustomTheme = createTheme({
           },
         },
         body: {
-          fontFamily: 'Hellix', // Set the default font family for the body
+          fontFamily: 'Hellix, sans-serif', // Set the default font family for the body
           fontWeight: 400,
           fontSize: '18px',
           backgroundColor: '#eff7f7',
@@ -56,10 +59,12 @@ const CustomTheme = createTheme({
         p: {
           marginTop: 0
         },
+        button: {
+          fontFamily: 'Hellix, sans-serif',
+        },
         '.navigationDrawer': {
           '& .MuiTypography-root': {
             fontWeight: 600,
-            letterSpacing: '3.2px',
           },
           '& .MuiList-root .MuiList-root .MuiTypography-root': {
             fontWeight: 600,
@@ -118,9 +123,6 @@ const CustomTheme = createTheme({
     },
     MuiTypography: {
       styleOverrides: {
-        root: {
-          fontFamily: "Hellix",
-        },
         paragraph: {
           fontWeight: 400
         },

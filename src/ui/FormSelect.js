@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 const StyledSelect = styled(Select)`
-    &.css-xwomp5-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+    &.MuiInputBase-root{
     font-family: inherit;
     font-size: 16px;
     width: 100%;
