@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material";
 import BodyBg from './images/body-bg.png';
-import { get4k } from "./utils/Helpers";
+import { get4k, mediaQueries } from "./utils/Helpers";
 
 const CustomTheme = createTheme({
   palette: {
@@ -16,40 +16,51 @@ const CustomTheme = createTheme({
   },
   breakpoints: {
     values: {
-      xs: 0,
-      sm: 576,
-      md: 768,
-      lg: 1025,
-      xl: 1366,
-      xxxl: 2201
+      xs: mediaQueries.xs,
+      sm: mediaQueries.sm,
+      md: mediaQueries.md,
+      lg: mediaQueries.lg,
+      xl: mediaQueries.xl,
+      xxxl: mediaQueries.xxxl,
     },
   },
   components: {
     MuiCssBaseline: {
-      styleOverrides: {
+      styleOverrides: (theme) => ({
         '*': {
-          scrollbarColor: 'rgba(29, 81, 141, 0.7) transparent',
+          scrollbarColor: 'rgba(29, 81, 141, 0) transparent',
           scrollbarWidth: 'thin',
-          "&::-webkit-scrollbar, & *::-webkit-scrollbar": {
+          '&:hover': {
+            scrollbarColor: 'rgba(29, 81, 141, 0.7) transparent',
+          },
+          "&::-webkit-scrollbar": {
             borderRadius: 0,
             width: '4px',
             height: '4px',
           },
-          "&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track": {
+          "&::-webkit-scrollbar-track": {
             background: 'transparent',
             boxShadow: 'none',
             borderRadius: "10px",
             margin: 0,
           },
-          "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+          "&::-webkit-scrollbar-thumb": {
             borderRadius: 10,
+            backgroundColor: "rgba(29, 81, 141, 0)",
+          },
+          '&:hover::-webkit-scrollbar-thumb': {
             backgroundColor: "rgba(29, 81, 141, 0.7)",
           },
         },
         body: {
-          fontFamily: 'Hellix, sans-serif', // Set the default font family for the body
+          fontFamily: 'Hellix, sans-serif',
           fontWeight: 400,
-          fontSize: '18px',
+          [theme.breakpoints.down('xl')]: {
+            fontSize: '16px',
+          },
+          [theme.breakpoints.up('xl')]: {
+            fontSize: '18px',
+          },
           backgroundColor: '#eff7f7',
           backgroundImage: `url(${BodyBg})`,
           backgroundRepeat: 'no-repeat',
@@ -87,14 +98,22 @@ const CustomTheme = createTheme({
           padding: '12px',
           height: 'auto',
         },
-        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root.Mui-selected': {
+        '.MuiPopover-root .MuiMenuItem-root.Mui-selected': {
           background: '#E8EFF8',
         },
-        '.MuiPopover-root .css-jezgo-MuiButtonBase-root-MuiMenuItem-root:hover': {
-          background: '#fff',
+        '.MuiPopover-root .MuiMenuItem-root:hover': {
+          background: 'rgba(0,0,0,0.025)',
         },
-        '.MuiPopover-root .css-1pvtjvc-MuiList-root-MuiMenu-list': {
+        '.MuiPopover-root .MuiMenu-list': {
           padding: '8px',
+        },
+        '.MuiTooltip-popper': {
+          '& .MuiTooltip-tooltip': {
+            background: 'var(--body-text-color)'
+          },
+          '& .MuiTooltip-arrow:before': {
+            background: 'var(--body-text-color)'
+          }
         },
         '.main_view': {
           width: '100%',
@@ -107,6 +126,9 @@ const CustomTheme = createTheme({
           backgroundColor: 'rgba(199, 219, 229, 0.25)',
           borderRadius: '32px',
           overflow: 'hidden',
+          [theme.breakpoints.down('md')]: {
+            borderRadius: '16px',
+          },
         },
         '.page_container': {
           height: 'calc(100% - 76px)',
@@ -119,7 +141,7 @@ const CustomTheme = createTheme({
         '.page_inner': {
           padding: '24px 32px'
         }
-      },
+      }),
     },
     MuiTypography: {
       styleOverrides: {
@@ -188,11 +210,11 @@ const CustomTheme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          "&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb": {
+          "&::-webkit-scrollbar-thumb": {
             backgroundColor: 'transparent',
             // borderColor: 'transparent',
           },
-          "&:hover::-webkit-scrollbar-thumb, &:hover *::-webkit-scrollbar-thumb": {
+          "&:hover::-webkit-scrollbar-thumb": {
             backgroundColor: "rgba(29, 81, 141, 0.5)",
             // borderColor: "rgba(29, 81, 141, 0.5)",
           }

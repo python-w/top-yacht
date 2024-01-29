@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import { Box, List, Divider, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useMediaQuery, Tooltip, Avatar } from "@mui/material";
+import { Box, List, Divider, IconButton, ListItem, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, Tooltip } from "@mui/material";
 import MuiDrawer from "@mui/material/Drawer";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import CircleRounded from "@mui/icons-material/CircleRounded";
 import DrawerBtnBg from "../../images/DrawerBtnBg.svg";
 import CRaceDaySvg from "../../images/RaceDay.svg";
 import CReportsSvg from "../../images/Reports.svg";
@@ -116,6 +115,16 @@ const MiniDrawer = () => {
   const CloseDrawer = (drawerState) => () => {
     setIsDrawerOpen(drawerState);
   };
+  const handlDrawerScroll = (index) => {
+    const menuParent = document.querySelector('.menuParent-' + index);
+    setIsDrawerOpen(true);
+    setTimeout(function () {
+      menuParent.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }, 100)
+  }
 
   const menuItems = [
     {
@@ -200,7 +209,7 @@ const MiniDrawer = () => {
               }
             </Box>
             {isBelowXlBreakpoint && isDrawerOpen ?
-              <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", height: 120, padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden" }}>
+              <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", height: 120, padding: 0, width: 16, borderRadius: 0, overflow: "hidden" }}>
                 <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24 }} />
               </IconButton>
               : ''}
@@ -214,7 +223,7 @@ const MiniDrawer = () => {
             {menuItems.map((menuItem, index) => (
               <ListItem key={index} disablePadding sx={{ display: "block" }}>
                 <List sx={{ py: 0 }}>
-                  <ListItem
+                  <ListItem onClick={() => handlDrawerScroll(index)}
                     sx={{
                       minHeight: 48,
                       justifyContent: isDrawerOpen ? "initial" : "center",
@@ -230,18 +239,34 @@ const MiniDrawer = () => {
                         width: isDrawerOpen ? "100%" : get4k(48),
                       }
                     }}
-                    className={!isDrawerOpen && CheckIfActive(menuItem) ? 'hasActiveChild' : ''}
+                    className={`menuParent-${index}  ${!isDrawerOpen && CheckIfActive(menuItem) ? 'hasActiveChild' : ''}`}
                   >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: isDrawerOpen ? (is4KScreen ? get4k(12) : 1.5) : 0,
-                        justifyContent: "center",
-                      }}
-                    >
-                      <img src={menuItem.icon} alt="" />
-                    </ListItemIcon>
-                    {isDrawerOpen ? <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} /> : ""}
+                    {isDrawerOpen ?
+                      <>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: is4KScreen ? get4k(12) : 1.5,
+                            justifyContent: "center",
+                          }}
+                        >
+                          <img src={menuItem.icon} alt="" />
+                        </ListItemIcon>
+                        <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} />
+                      </>
+                      :
+                      <Tooltip title={menuItem.menu} arrow>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: 0,
+                            justifyContent: "center",
+                          }}
+                        >
+                          <img src={menuItem.icon} alt="" />
+                        </ListItemIcon>
+                      </Tooltip>
+                    }
                   </ListItem>
                 </List>
                 {isDrawerOpen ? (
