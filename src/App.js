@@ -1,6 +1,6 @@
 import "./App.css";
 import "./custom.scss";
-import { ThemeProvider, useTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { Container, CssBaseline, Box } from '@mui/material';
 import CustomTheme from './customTheme';
 import TYRouter from './components/Routes';

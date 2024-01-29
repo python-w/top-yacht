@@ -1,5 +1,5 @@
 import { GridRow } from '../../../ui/GridRow'
-import { Divider, Grid } from '@mui/material'
+import { Divider, Grid, useTheme } from '@mui/material'
 import FormLabel from '../../../ui/FormLabel'
 import FormSectionTitle from '../../../ui/FormSectionTitle'
 import styled from 'styled-components'
@@ -16,6 +16,7 @@ const StyledPara = styled.p`
 `
 
 export default function ViewForm() {
+    const theme = useTheme();
     //Table Data
     const headers = ["Name", "Role", "Phone #", "Email Address"];
 
@@ -26,7 +27,7 @@ export default function ViewForm() {
     ];
     return (
         <>
-            <GridRow container spacing={4} justifyContent="space-between">
+            <GridRow container spacing={theme.breakpoints.down('md') ? 4 : 2} justifyContent="space-between">
                 <Grid item md={3}>
                     <FormLabel>
                         Club Name

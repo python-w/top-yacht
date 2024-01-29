@@ -31,6 +31,7 @@ const Table = styled.table`
             padding: 10px 24px;
             background: #fff;
             width: 25%;
+            white-space: nowrap;
             div{
                 display: flex;
                 align-items:center;
