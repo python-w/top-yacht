@@ -11,7 +11,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     backgroundColor: "#fff",
     padding: theme.spacing(1, 1.5),
     border: '1px solid var(--border-color)',
-    height: 24,
     // vertical padding + font size from searchIcon    
     transition: theme.transitions.create('width'),
     '&:focus': {

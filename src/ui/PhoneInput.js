@@ -11,6 +11,10 @@ const StyledPhoneInput = styled(PhoneInput)`
     position: absolute;
     height: 100%;
   }
+  .react-international-phone-country-selector-button__dropdown-arrow{
+    margin-right: 0;
+    margin-left: 4px;
+  }
   button.react-international-phone-country-selector-button {
     border: 0;
     background: transparent;
@@ -41,11 +45,11 @@ const StyledPhoneInput = styled(PhoneInput)`
     border-radius: 12px;
     background: no-repeat;
     padding-left: 68px;
-    height: 40px;
+    height: 41px;
     font-size: 16px;
     background: #fff;
     @media (min-width: ${mediaQueries.xxxl}px) {
-        height: ${get4k(40)};
+        height: ${get4k(41)};
         padding-left: ${get4k(68)};
         font-size: ${get4k(16)};
         border-radius: ${get4k(12)};

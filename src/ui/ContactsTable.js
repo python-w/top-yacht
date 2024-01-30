@@ -4,7 +4,11 @@ import CustomPhoneInput from './PhoneInput';
 import TimesButton from './TimesButton';
 import { FlagImage } from 'react-international-phone';
 import CustomTable from './CustomTable';
+import styled from 'styled-components';
 
+const StyledFlagImage = styled(FlagImage)`
+        margin-right: 12px;    
+`
 
 export default function ContactsTable({ headers, data, isEditMode, onInputChange, onRowRemove, options, handlePhoneChange, handleRoleChange }) {
 
@@ -30,7 +34,7 @@ export default function ContactsTable({ headers, data, isEditMode, onInputChange
                                 <td key={cellIndex}>
                                     {key === 'phone' ? (
                                         <>
-                                            <div><FlagImage iso2="us" size="24px" /> {cell}</div>
+                                            <div><StyledFlagImage iso2="us" size="24px" /> {cell}</div>
                                         </>
                                     ) : (
                                         <div>{cell}</div>

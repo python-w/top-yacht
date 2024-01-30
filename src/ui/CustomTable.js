@@ -49,12 +49,6 @@ const Table = styled.table`
                 &.react-international-phone-input-container{
                     width: 100%;
                 }
-                img{
-                    margin-right: 12px;
-                    @media (min-width: ${mediaQueries.xxxl}px) {
-                        margin-right: ${get4k(12)};
-                    }
-                }
             }
             &:first-child{
                 border-top-left-radius: 48px;

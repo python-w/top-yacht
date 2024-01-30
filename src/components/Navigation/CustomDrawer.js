@@ -86,7 +86,6 @@ const LogoBgStyled = styledC.div`
   right: -58px;
   width: 86px;
   height: 100%;
-  z-index: 1;
   transform: rotate(180deg) scaleX(-1);
   top: -1px;
   @media (min-width: ${mediaQueries.xxxl}px) {
@@ -99,6 +98,29 @@ const LogoBgStyled = styledC.div`
     width: auto;
   },
 `;
+
+const StyledClubLogoIcon = styled("img")(({ theme }) => ({
+  width: 48,
+  height: 48,
+  objectFit: 'contain',
+  [theme.breakpoints.up("xxxl")]: {
+    width: get4k(48),
+    height: get4k(48)
+  }
+}));
+
+const StyledClubLogo = styled("img")(({ theme }) => ({
+  width: 'auto',
+  height: '48px',
+  objectFit: 'contain',
+  maxWidth: '100%',
+  position: 'relative',
+  zIndex: '1',
+  [theme.breakpoints.up("xxxl")]: {
+    width: 'auto',
+    height: get4k(48)
+  }
+}));
 
 const MiniDrawer = () => {
   const theme = useTheme();
@@ -192,14 +214,14 @@ const MiniDrawer = () => {
     <>
       <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)} sx={{ position: isBelowXlBreakpoint ? "absolute" : "relative" }}>
         {!isBelowXlBreakpoint ? (
-          <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden",[theme.breakpoints.up("xxxl")]: {right: get4k(1), height: get4k(120), width: get4k(16), top: get4k(56)} }}>
+          <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden", [theme.breakpoints.up("xxxl")]: { right: get4k(1), height: get4k(120), width: get4k(16), top: get4k(56) } }}>
             <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
-            {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: {fontSize: get4k(24)} }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: {fontSize: get4k(24)} }} />}
+            {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: { fontSize: get4k(24) } }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: { fontSize: get4k(24) } }} />}
           </IconButton>
         ) : (
           ""
         )}
-        <Box sx={{ backgroundImage: "linear-gradient(#356DAD, transparent)", backgroundColor: "#1D518D", color: "#fff", border: "none", width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0", position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflowY: !isDrawerOpen ? "hidden" : "visible", [theme.breakpoints.up("xxxl")]: {width: `calc(100% - ${get4k(16)})`, borderRadius: `0 ${get4k(40)} ${get4k(40)} 0`} }}>
+        <Box sx={{ backgroundImage: "linear-gradient(#356DAD, transparent)", backgroundColor: "#1D518D", color: "#fff", border: "none", width: `calc(100% - 16px)`, borderRadius: "0 40px 40px 0", position: "relative", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", overflowY: !isDrawerOpen ? "hidden" : "visible", [theme.breakpoints.up("xxxl")]: { width: `calc(100% - ${get4k(16)})`, borderRadius: `0 ${get4k(40)} ${get4k(40)} 0` } }}>
           <CstAppbar onDrawerOpen={isDrawerOpen} ondrawerWidth={drawerWidth} onBelowXlBreakpoint={isBelowXlBreakpoint} onBelowLgBreakpoint={isBelowLgBreakpoint} onhandleDrawerToggle={handleDrawerToggle} />
           <DrawerHeader
             className="drawerHeader"
@@ -216,12 +238,12 @@ const MiniDrawer = () => {
               },
             }}
           >
-            <Box sx={{ backgroundColor: "white", width: isDrawerOpen ? 232 : 88, height: 84, borderRadius: isDrawerOpen ? "0 0 30px 30px" : "0 0 25px 25px", display: "flex", alignItems: "center", padding: 2, position: "relative", transition: theme.transitions.create("border-radius", { easing: theme.transitions.easing.sharp, duration: theme.transitions.duration.enteringScreen}), [theme.breakpoints.up("xxxl")]: {width: isDrawerOpen ? get4k(232) : get4k(88), height: get4k(84), borderRadius: isDrawerOpen ? `0 0 ${get4k(30)} ${get4k(30)}` : `0 0 ${get4k(25)} ${get4k(25)}`, padding: get4k(16)} }}>
+            <Box sx={{ backgroundColor: "white", width: isDrawerOpen ? 232 : 88, height: 84, borderRadius: isDrawerOpen ? "0 0 30px 30px" : "0 0 25px 25px", display: "flex", alignItems: "center", justifyContent: "center", padding: 2, position: "relative", [theme.breakpoints.up("xxxl")]: { width: isDrawerOpen ? get4k(232) : get4k(88), height: get4k(84), borderRadius: isDrawerOpen ? `0 0 ${get4k(30)} ${get4k(30)}` : `0 0 ${get4k(25)} ${get4k(25)}`, padding: get4k(16) } }}>
               {!isDrawerOpen ? (
-                <img src={ClubLogoIcon} width={39} height={52} alt="Club Logo Icon" />
+                <StyledClubLogoIcon src={ClubLogoIcon} width={48} height={48} alt="Club Logo Icon" />
               ) : (
                 <>
-                  <img src={ClubLogo} width={204} height={52} alt="Club Logo" />
+                  <StyledClubLogo src={ClubLogo} width={204} height={52} alt="Club Logo" />
                   <LogoBgStyled>
                     <img src={UnionBg} width={86} height={69} className="logoBg" alt="Logo Area Style" />
                   </LogoBgStyled>
@@ -229,8 +251,8 @@ const MiniDrawer = () => {
               )}
             </Box>
             {isBelowXlBreakpoint && isDrawerOpen ? (
-              <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden", [theme.breakpoints.up("xxxl")]: {right: get4k(30), width: get4k(16), height: get4k(16)} }}>
-                <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: {fontSize: get4k(24)} }} />
+              <IconButton disableRipple className="navDrawerBtn" onClick={CloseDrawer(false)} sx={{ position: "absolute", right: 30, color: "#fff", padding: 0, width: 16, height: 16, borderRadius: 0, overflow: "hidden", [theme.breakpoints.up("xxxl")]: { right: get4k(30), width: get4k(16), height: get4k(16) } }}>
+                <CloseOutlinedIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: { fontSize: get4k(24) } }} />
               </IconButton>
             ) : (
               ""
@@ -370,8 +392,8 @@ const MiniDrawer = () => {
               </ListItem>
             ))}
           </List>
-          <Divider sx={{ mx: 2, mt: 2, [theme.breakpoints.up("xxxl")]: {mx: get4k(16), mt: get4k(16)} }} />
-          <Box sx={{ width: "100%", height: 84, display: "flex", alignItems: "center", padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, position: "relative", justifyContent: !isDrawerOpen ? "center" : "flex-start", [theme.breakpoints.up("xxxl")]: {padding: get4k(16), paddingLeft: !isDrawerOpen ? get4k(16): get4k(32)} }}>
+          <Divider sx={{ mx: 2, mt: 2, [theme.breakpoints.up("xxxl")]: { mx: get4k(16), mt: get4k(16) } }} />
+          <Box sx={{ width: "100%", height: 84, display: "flex", alignItems: "center", padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, position: "relative", justifyContent: !isDrawerOpen ? "center" : "flex-start", [theme.breakpoints.up("xxxl")]: { padding: get4k(16), paddingLeft: !isDrawerOpen ? get4k(16) : get4k(32) } }}>
             {!isDrawerOpen ? (
               <img src={AppLogoIcon} width={25} height={52} alt="app logo" />
             ) : (

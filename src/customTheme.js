@@ -27,6 +27,11 @@ const CustomTheme = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: (theme) => ({
+        ':root': {
+          '--primary-color': '#356DAD',
+          '--body-text-color': '#42566C',
+          '--border-color': '#C2CBD6',
+        },
         "*": {
           scrollbarColor: "rgba(29, 81, 141, 0) transparent",
           scrollbarWidth: "thin",
@@ -130,6 +135,11 @@ const CustomTheme = createTheme({
           "& .MuiTooltip-arrow:before": {
             background: "var(--body-text-color)",
           },
+        },
+        ".MuiBox-root": {
+          '.MuiFormControlLabel-label': {
+            fontSize: 16,
+          }
         },
         ".main_view": {
           width: "100%",
@@ -322,6 +332,7 @@ const CustomTheme = createTheme({
             color: "red",
             display: "inline-block",
             marginLeft: "8px",
+            fontWeight: 700,
           },
         },
       },
