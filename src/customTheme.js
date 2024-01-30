@@ -138,7 +138,8 @@ const CustomTheme = createTheme({
         },
         ".MuiBox-root": {
           '.MuiFormControlLabel-label': {
-            fontSize: 16,
+            fontSize: 14,
+            fontWeight: 600
           }
         },
         ".main_view": {
@@ -295,10 +296,6 @@ const CustomTheme = createTheme({
         paper: {
           border: "none",
           background: "transparent",
-          // backgroundImage: 'linear-gradient(#356DAD, transparent)',
-          // backgroundColor: "#1D518D",
-          // color: "#fff",
-          // border: 'none',
         },
       },
     },
@@ -307,11 +304,9 @@ const CustomTheme = createTheme({
         root: {
           "&::-webkit-scrollbar-thumb": {
             backgroundColor: "transparent",
-            // borderColor: 'transparent',
           },
           "&:hover::-webkit-scrollbar-thumb": {
             backgroundColor: "rgba(29, 81, 141, 0.5)",
-            // borderColor: "rgba(29, 81, 141, 0.5)",
           },
         },
       },

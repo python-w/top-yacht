@@ -102,24 +102,24 @@ const LogoBgStyled = styledC.div`
 const StyledClubLogoIcon = styled("img")(({ theme }) => ({
   width: 48,
   height: 48,
-  objectFit: 'contain',
+  objectFit: "contain",
   [theme.breakpoints.up("xxxl")]: {
     width: get4k(48),
-    height: get4k(48)
-  }
+    height: get4k(48),
+  },
 }));
 
 const StyledClubLogo = styled("img")(({ theme }) => ({
-  width: 'auto',
-  height: '48px',
-  objectFit: 'contain',
-  maxWidth: '100%',
-  position: 'relative',
-  zIndex: '1',
+  width: "auto",
+  height: "48px",
+  objectFit: "contain",
+  maxWidth: "100%",
+  position: "relative",
+  zIndex: "1",
   [theme.breakpoints.up("xxxl")]: {
-    width: 'auto',
-    height: get4k(48)
-  }
+    width: "auto",
+    height: get4k(48),
+  },
 }));
 
 const MiniDrawer = () => {
@@ -139,8 +139,8 @@ const MiniDrawer = () => {
     // ...theme.mixins.toolbar,
     minHeight: 80,
     [theme.breakpoints.up("xxxl")]: {
-      minHeight: get4k(80)
-    }
+      minHeight: get4k(80),
+    },
   }));
   const handleDrawerToggle = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -149,15 +149,15 @@ const MiniDrawer = () => {
     setIsDrawerOpen(drawerState);
   };
   const handlDrawerScroll = (index) => {
-    const menuParent = document.querySelector('.menuParent-' + index);
+    const menuParent = document.querySelector(".menuParent-" + index);
     setIsDrawerOpen(true);
     setTimeout(function () {
       menuParent.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
+        behavior: "smooth",
+        block: "nearest",
       });
-    }, 100)
-  }
+    }, 100);
+  };
 
   const menuItems = [
     {
@@ -209,6 +209,28 @@ const MiniDrawer = () => {
     const location = useLocation();
     return menuItemChild.path === location.pathname;
   }
+
+  const ListItemButtonStyled = styled(ListItemButton)`
+    & .MuiListItemIcon-root {
+      &::before {
+        content: '';
+        height: 6px;
+        background-color: white;
+        border-radius: 100px;
+        transition: ${theme.transitions.create("width", {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.enteringScreen,
+        })};
+      },
+    }
+    &:hover {
+      & .MuiListItemIcon-root {
+        &::before {
+          width: 16px;
+        }
+      }
+    }
+  `
 
   return (
     <>
@@ -270,14 +292,15 @@ const MiniDrawer = () => {
                 marginRight: get4k(16),
                 marginLeft: isDrawerOpen ? 0 : get4k(16),
                 mt: get4k(32),
-                paddingBlock: get4k(8)
+                paddingBlock: get4k(8),
               },
             }}
           >
             {menuItems.map((menuItem, index) => (
               <ListItem key={index} disablePadding sx={{ display: "block" }}>
                 <List sx={{ py: 0 }}>
-                  <ListItem onClick={() => handlDrawerScroll(index)}
+                  <ListItem
+                    onClick={() => handlDrawerScroll(index)}
                     sx={{
                       minHeight: 40,
                       justifyContent: isDrawerOpen ? "initial" : "center",
@@ -291,12 +314,12 @@ const MiniDrawer = () => {
                         pr: get4k(16),
                         pl: isDrawerOpen ? get4k(32) : get4k(16),
                         width: isDrawerOpen ? "100%" : get4k(48),
-                        paddingBlock: get4k(8)
+                        paddingBlock: get4k(8),
                       },
                     }}
-                    className={`menuParent-${index}  ${!isDrawerOpen && CheckIfActive(menuItem) ? 'hasActiveChild' : ''}`}
+                    className={`menuParent-${index}  ${!isDrawerOpen && CheckIfActive(menuItem) ? "hasActiveChild" : ""}`}
                   >
-                    {isDrawerOpen ?
+                    {isDrawerOpen ? (
                       <>
                         <ListItemIcon
                           sx={{
@@ -309,7 +332,7 @@ const MiniDrawer = () => {
                         </ListItemIcon>
                         <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} />
                       </>
-                      :
+                    ) : (
                       <Tooltip title={menuItem.menu} arrow>
                         <ListItemIcon
                           sx={{
@@ -321,7 +344,7 @@ const MiniDrawer = () => {
                           <img src={menuItem.icon} alt="" />
                         </ListItemIcon>
                       </Tooltip>
-                    }
+                    )}
                   </ListItem>
                 </List>
                 {isDrawerOpen ? (
@@ -330,7 +353,7 @@ const MiniDrawer = () => {
                       {menuItem.children.map((menuItemChild, index) => (
                         <ListItem key={index} disablePadding sx={{ display: "block" }}>
                           <StyledNavLink to={menuItemChild.path}>
-                            <ListItemButton
+                            <ListItemButtonStyled
                               sx={{
                                 minHeight: 48,
                                 justifyContent: isDrawerOpen ? "initial" : "center",
@@ -347,15 +370,10 @@ const MiniDrawer = () => {
                                   mr: 2,
                                   justifyContent: "center",
                                   "&::before": {
-                                    content: '""',
                                     width: CheckIfActiveChild(menuItemChild) ? 16 : 6,
-                                    height: 6,
-                                    backgroundColor: "white",
-                                    borderRadius: "100px",
-                                    transition: theme.transitions.create("width", {
-                                      easing: theme.transitions.easing.sharp,
-                                      duration: theme.transitions.duration.enteringScreen,
-                                    }),
+                                    [theme.breakpoints.up("xxxl")]: {
+                                      width: CheckIfActiveChild(menuItemChild) ? get4k(16) : get4k(6),
+                                    },
                                   },
                                   [theme.breakpoints.up("xxxl")]: {
                                     mr: get4k(16),
@@ -364,7 +382,7 @@ const MiniDrawer = () => {
                               ></ListItemIcon>
 
                               <ListItemText primary={menuItemChild.label} />
-                            </ListItemButton>
+                            </ListItemButtonStyled>
                           </StyledNavLink>
                         </ListItem>
                       ))}

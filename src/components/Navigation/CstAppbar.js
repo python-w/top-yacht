@@ -119,10 +119,10 @@ const CstAppbar = ({ onDrawerOpen, ondrawerWidth, onBelowXlBreakpoint, onBelowLg
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 {!onBelowLgBreakpoint ?
                   <Box sx={{ display: "flex", flexDirection: "column", alignItems: "flex-start", paddingLeft: 1.5, [theme.breakpoints.up("xxxl")]: { paddingLeft: get4k(12) } }}>
-                    <Typography variant="h6" sx={{ color: "#356DAD", fontSize: 16, [theme.breakpoints.up("xxxl")]: { fontSize: get4k(16) } }}>
+                    <Typography variant="h6" sx={{ color: "#356DAD", lineHeight: 1, fontSize: 16, [theme.breakpoints.up("xxxl")]: { fontSize: get4k(16) } }}>
                       Chris
                     </Typography>
-                    <Typography component="span" sx={{ fontSize: 14, fontWeight: 600, color: "#848484", [theme.breakpoints.up("xxxl")]: { fontSize: get4k(14) } }}>
+                    <Typography component="span" sx={{ fontSize: 14, lineHeight: 1, fontWeight: 600, color: "#848484", [theme.breakpoints.up("xxxl")]: { fontSize: get4k(14) } }}>
                       Senior Member
                     </Typography>
                   </Box>
