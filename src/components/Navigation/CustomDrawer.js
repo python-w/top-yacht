@@ -192,7 +192,7 @@ const MiniDrawer = () => {
     <>
       <Drawer className="navigationDrawer" variant="permanent" open={isDrawerOpen} anchor={"left"} onClose={() => setIsDrawerOpen(false)} sx={{ position: isBelowXlBreakpoint ? "absolute" : "relative" }}>
         {!isBelowXlBreakpoint ? (
-          <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden",[theme.breakpoints.up("xxxl")]: {right: get4k(8), height: get4k(120), width: get4k(16), top: get4k(56)} }}>
+          <IconButton disableRipple className="navDrawerBtn" onClick={handleDrawerToggle} sx={{ position: "absolute", right: 1, color: "#fff", height: 120, padding: 0, width: 16, top: 56, borderRadius: 0, overflow: "hidden",[theme.breakpoints.up("xxxl")]: {right: get4k(1), height: get4k(120), width: get4k(16), top: get4k(56)} }}>
             <img alt="Drawer Button" src={DrawerBtnBg} style={{ position: "absolute", width: "100%", height: "100%", zIndex: 1 }} />
             {isDrawerOpen ? <ChevronLeftIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: {fontSize: get4k(24)} }} /> : <ChevronRightIcon sx={{ zIndex: 2, fontSize: 24, [theme.breakpoints.up("xxxl")]: {fontSize: get4k(24)} }} />}
           </IconButton>

@@ -135,7 +135,7 @@ const CustomTheme = createTheme({
           width: "100%",
           flexGrow: 1,
           height: "100vh",
-          padding: '0 0 24px 0',
+          padding: "0 0 24px 0",
           [theme.breakpoints.up("xxxl")]: {
             padding: `0 0 ${get4k(24)} 0`,
           },
@@ -205,43 +205,70 @@ const CustomTheme = createTheme({
     },
     MuiSelect: {
       styleOverrides: {
+        root: {
+          height: 40,
+          fontSize: "16px",
+          width: "100%",
+          borderRadius: "12px",
+          border: "1px solid var(--border-color)",
+          color: "var(--body-text-color)",
+          background: "#fff",
+          "@media (min-width: 2201px)": {
+            height: get4k(40),
+            fontSize: get4k(16),
+            borderRadius: get4k(12),
+          },
+        },
         nativeInput: {
           position: "absolute !important",
         },
-        select: {
-          minHeight: "initial",
-          borderRadius: 0,
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          "& .MuiOutlinedInput-notchedOutline": {
+            border: 0,
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "inherit",
+          },
+          "&.Mui-focused": {
+            borderRadius: get4k(12),
+            borderColor: "var(--primary-color)",
+            boxShadow: "0 0 0 2px rgba(53, 109, 173, 0.2)",
+          },
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          fontStyle: 'normal',
+          fontStyle: "normal",
           fontWeight: 600,
-          lineHeight: 'normal',
-          textTransform: 'uppercase',
-          background: 'transparent',
-          borderRadius: '36px',
-          boxShadow: 'none',
-          border: '1px solid var(--primary-color)',
-          cursor: 'pointer',
+          lineHeight: "normal",
+          textTransform: "uppercase",
+          background: "transparent",
+          borderRadius: "36px",
+          boxShadow: "none",
+          border: "1px solid var(--primary-color)",
+          cursor: "pointer",
           display: "inline-flex",
-          alignItems: 'center',
+          alignItems: "center",
           "@media (min-width: 0px)": {
             fontSize: 12,
-            padding: '8px 10px',
+            padding: "8px 10px",
           },
           "@media (min-width: 768px)": {
             fontSize: 14,
             height: 40,
-            padding: '12px 20px',
+            padding: "12px 20px",
           },
           "@media (min-width: 2201px)": {
             fontSize: get4k(14),
             padding: `${get4k(12)} ${get4k(20)}`,
             height: get4k(40),
-            borderRadius: get4k(36)
+            borderRadius: get4k(36),
           },
         },
       },

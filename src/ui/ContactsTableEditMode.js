@@ -1,27 +1,29 @@
 import styled from 'styled-components'
 import ContactsTable from './ContactsTable';
+import { Button } from '@mui/material';
+import { get4k, mediaQueries } from '../utils/Helpers';
 
 const TableOuter = styled.div` 
     border-radius: 16px;
     background: #F1F7F9;
+    @media (min-width: ${mediaQueries.xxxl}px) {
+        border-radius: ${get4k(16)}
+    }
 `
 const BtnHolder = styled.div`
     padding: 0 24px 24px;
+    @media (min-width: ${mediaQueries.xxxl}px) {
+        padding: 0 ${get4k(24)} ${get4k(24)}
+    }
 `
-const AddButton = styled.button`
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    text-transform: uppercase;
-    color: var(--primary-color);
-    width: 100%;
-    border-radius: 36px;
-    border: 1px dashed #356DAD;
-    background: #FFF;
-    box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.07);
-    padding: 12px 18px;
-    cursor: pointer;
+const AddButton = styled(Button)`
+    &.MuiButton-root {
+        color: var(--primary-color);
+        width: 100%;
+        border: 1px dashed #356DAD;
+        background: #FFF;
+        box-shadow: 0px 3px 2px 0px rgba(0, 0, 0, 0.07);
+    }
 `
 
 export default function ContactsTableEditMode({ headers, data, onInputChange, onRowRemove, onAddRow, isEditMode }) {
