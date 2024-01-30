@@ -187,6 +187,7 @@ const CustomTheme = createTheme({
       styleOverrides: {
         root: {
           fontSize: 18,
+          fontWeight: 500,
           "@media (min-width: 2201px)": {
             fontSize: get4k(18),
           },
