@@ -32,35 +32,6 @@ const CustomTheme = createTheme({
           '--body-text-color': '#42566C',
           '--border-color': '#C2CBD6',
         },
-        "*": {
-          scrollbarColor: "rgba(29, 81, 141, 0) transparent",
-          scrollbarWidth: "thin",
-          "&:hover": {
-            scrollbarColor: "rgba(29, 81, 141, 0.7) transparent",
-          },
-          "&::-webkit-scrollbar": {
-            borderRadius: 0,
-            width: "4px",
-            height: "4px",
-            [theme.breakpoints.up("xxxl")]: {
-              width: get4k(4),
-              height: get4k(4),
-            },
-          },
-          "&::-webkit-scrollbar-track": {
-            background: "transparent",
-            boxShadow: "none",
-            borderRadius: "10px",
-            margin: 0,
-          },
-          "&::-webkit-scrollbar-thumb": {
-            borderRadius: 10,
-            backgroundColor: "rgba(29, 81, 141, 0)",
-          },
-          "&:hover::-webkit-scrollbar-thumb": {
-            backgroundColor: "rgba(29, 81, 141, 0.7)",
-          },
-        },
         body: {
           fontFamily: "Hellix, sans-serif",
           fontWeight: 400,
@@ -166,7 +137,6 @@ const CustomTheme = createTheme({
         },
         ".page_container": {
           height: "calc(100% - 76px)",
-          overflowY: "auto",
           background: "#fff",
           "&::-webkit-scrollbar-track, & *::-webkit-scrollbar-track": {
             background: "#fff",

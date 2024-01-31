@@ -20,6 +20,7 @@ import AppLogo from "../../images/appLogo.svg";
 import AppLogoIcon from "../../images/appLogoIcon.svg";
 import UnionBg from "../../images/union.svg";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import { Scrollbars } from 'rc-scrollbars';
 
 const drawerWidth = 400;
 
@@ -280,146 +281,146 @@ const MiniDrawer = () => {
               ""
             )}
           </DrawerHeader>
-          <List
-            sx={{
-              flex: 1,
-              overflowY: "auto",
-              overflowX: "hidden",
-              marginRight: "16px",
-              marginLeft: isDrawerOpen ? 0 : "16px",
-              mt: 4,
-              [theme.breakpoints.up("xxxl")]: {
-                marginRight: get4k(16),
-                marginLeft: isDrawerOpen ? 0 : get4k(16),
-                mt: get4k(32),
-                paddingBlock: get4k(8),
-              },
-            }}
-          >
-            {menuItems.map((menuItem, index) => (
-              <ListItem key={index} disablePadding sx={{ display: "block" }}>
-                <List sx={{ py: 0 }}>
-                  <ListItem
-                    onClick={() => handlDrawerScroll(index)}
-                    sx={{
-                      minHeight: 40,
-                      justifyContent: isDrawerOpen ? "initial" : "center",
-                      pr: 2,
-                      pl: isDrawerOpen ? 4 : 2,
-                      marginBottom: isDrawerOpen ? 0 : 1,
-                      marginInline: isDrawerOpen ? 0 : "auto",
-                      width: isDrawerOpen ? "100%" : "48px",
-                      [theme.breakpoints.up("xxxl")]: {
-                        minHeight: get4k(40),
-                        pr: get4k(16),
-                        pl: isDrawerOpen ? get4k(32) : get4k(16),
-                        width: isDrawerOpen ? "100%" : get4k(48),
-                        paddingBlock: get4k(8),
-                      },
-                    }}
-                    className={`menuParent-${index}  ${!isDrawerOpen && CheckIfActive(menuItem) ? "hasActiveChild" : ""}`}
-                  >
-                    {isDrawerOpen ? (
-                      <>
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: is4KScreen ? get4k(12) : 1.5,
-                            justifyContent: "center",
-                          }}
-                        >
-                          <img src={menuItem.icon} alt="" />
-                        </ListItemIcon>
-                        <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} />
-                      </>
-                    ) : (
-                      <Tooltip title={menuItem.menu} arrow>
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: 0,
-                            justifyContent: "center",
-                          }}
-                        >
-                          <img src={menuItem.icon} alt="" />
-                        </ListItemIcon>
-                      </Tooltip>
-                    )}
-                  </ListItem>
-                </List>
-                {isDrawerOpen ? (
-                  <>
-                    <List sx={{ py: 0 }}>
-                      {menuItem.children.map((menuItemChild, index) => (
-                        <ListItem key={index} disablePadding sx={{ display: "block" }}>
-                          <StyledNavLink to={menuItemChild.path}>
-                            <ListItemButtonStyled
-                              sx={{
-                                minHeight: 48,
-                                justifyContent: isDrawerOpen ? "initial" : "center",
-                                pl: 5,
-                                [theme.breakpoints.up("xxxl")]: {
-                                  minHeight: get4k(48),
-                                  pl: get4k(40),
-                                },
-                              }}
-                            >
-                              <ListItemIcon
+          <Scrollbars autoHide>
+            <List
+              sx={{
+                flex: 1,
+                marginRight: "16px",
+                marginLeft: isDrawerOpen ? 0 : "16px",
+                mt: 4,
+                [theme.breakpoints.up("xxxl")]: {
+                  marginRight: get4k(16),
+                  marginLeft: isDrawerOpen ? 0 : get4k(16),
+                  mt: get4k(32),
+                  paddingBlock: get4k(8),
+                },
+              }}
+            >
+              {menuItems.map((menuItem, index) => (
+                <ListItem key={index} disablePadding sx={{ display: "block" }}>
+                  <List sx={{ py: 0 }}>
+                    <ListItem
+                      onClick={() => handlDrawerScroll(index)}
+                      sx={{
+                        minHeight: 40,
+                        justifyContent: isDrawerOpen ? "initial" : "center",
+                        pr: 2,
+                        pl: isDrawerOpen ? 4 : 2,
+                        marginBottom: isDrawerOpen ? 0 : 1,
+                        marginInline: isDrawerOpen ? 0 : "auto",
+                        width: isDrawerOpen ? "100%" : "48px",
+                        [theme.breakpoints.up("xxxl")]: {
+                          minHeight: get4k(40),
+                          pr: get4k(16),
+                          pl: isDrawerOpen ? get4k(32) : get4k(16),
+                          width: isDrawerOpen ? "100%" : get4k(48),
+                          paddingBlock: get4k(8),
+                        },
+                      }}
+                      className={`menuParent-${index}  ${!isDrawerOpen && CheckIfActive(menuItem) ? "hasActiveChild" : ""}`}
+                    >
+                      {isDrawerOpen ? (
+                        <>
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 0,
+                              mr: is4KScreen ? get4k(12) : 1.5,
+                              justifyContent: "center",
+                            }}
+                          >
+                            <img src={menuItem.icon} alt="" />
+                          </ListItemIcon>
+                          <ListItemText primary={menuItem.menu} sx={{ textTransform: "uppercase" }} />
+                        </>
+                      ) : (
+                        <Tooltip title={menuItem.menu} arrow>
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 0,
+                              mr: 0,
+                              justifyContent: "center",
+                            }}
+                          >
+                            <img src={menuItem.icon} alt="" />
+                          </ListItemIcon>
+                        </Tooltip>
+                      )}
+                    </ListItem>
+                  </List>
+                  {isDrawerOpen ? (
+                    <>
+                      <List sx={{ py: 0 }}>
+                        {menuItem.children.map((menuItemChild, index) => (
+                          <ListItem key={index} disablePadding sx={{ display: "block" }}>
+                            <StyledNavLink to={menuItemChild.path}>
+                              <ListItemButtonStyled
                                 sx={{
-                                  minWidth: 0,
-                                  mr: 2,
-                                  justifyContent: "center",
-                                  "&::before": {
-                                    width: CheckIfActiveChild(menuItemChild) ? 16 : 6,
-                                    [theme.breakpoints.up("xxxl")]: {
-                                      width: CheckIfActiveChild(menuItemChild) ? get4k(16) : get4k(6),
-                                    },
-                                  },
+                                  minHeight: 48,
+                                  justifyContent: isDrawerOpen ? "initial" : "center",
+                                  pl: 5,
                                   [theme.breakpoints.up("xxxl")]: {
-                                    mr: get4k(16),
+                                    minHeight: get4k(48),
+                                    pl: get4k(40),
                                   },
                                 }}
-                              ></ListItemIcon>
+                              >
+                                <ListItemIcon
+                                  sx={{
+                                    minWidth: 0,
+                                    mr: 2,
+                                    justifyContent: "center",
+                                    "&::before": {
+                                      width: CheckIfActiveChild(menuItemChild) ? 16 : 6,
+                                      [theme.breakpoints.up("xxxl")]: {
+                                        width: CheckIfActiveChild(menuItemChild) ? get4k(16) : get4k(6),
+                                      },
+                                    },
+                                    [theme.breakpoints.up("xxxl")]: {
+                                      mr: get4k(16),
+                                    },
+                                  }}
+                                ></ListItemIcon>
 
-                              <ListItemText primary={menuItemChild.label} />
-                            </ListItemButtonStyled>
-                          </StyledNavLink>
-                        </ListItem>
-                      ))}
-                    </List>
-                    {index !== menuItems.length - 1 && (
-                      <Divider
-                        sx={{
-                          mr: 1,
-                          ml: 4,
-                          justifyContent: "center",
-                          my: "20px",
-                          backgroundColor: "rgba(255,255,255,0.2)",
-                          [theme.breakpoints.up("xxxl")]: {
-                            mr: get4k(8),
-                            ml: get4k(32),
-                            my: get4k(20),
-                          },
-                        }}
-                      />
-                    )}
-                  </>
-                ) : (
-                  ""
-                )}
-              </ListItem>
-            ))}
-          </List>
-          <Divider sx={{ mx: 2, mt: 2, [theme.breakpoints.up("xxxl")]: { mx: get4k(16), mt: get4k(16) } }} />
-          <Box sx={{ width: "100%", height: 84, display: "flex", alignItems: "center", padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, position: "relative", justifyContent: !isDrawerOpen ? "center" : "flex-start", [theme.breakpoints.up("xxxl")]: { padding: get4k(16), paddingLeft: !isDrawerOpen ? get4k(16) : get4k(32) } }}>
-            {!isDrawerOpen ? (
-              <img src={AppLogoIcon} width={25} height={52} alt="app logo" />
-            ) : (
-              <>
-                <img src={AppLogo} width={125} height={37} alt="app logo" />
-              </>
-            )}
-          </Box>
+                                <ListItemText primary={menuItemChild.label} />
+                              </ListItemButtonStyled>
+                            </StyledNavLink>
+                          </ListItem>
+                        ))}
+                      </List>
+                      {index !== menuItems.length - 1 && (
+                        <Divider
+                          sx={{
+                            mr: 1,
+                            ml: 4,
+                            justifyContent: "center",
+                            my: "20px",
+                            backgroundColor: "rgba(255,255,255,0.2)",
+                            [theme.breakpoints.up("xxxl")]: {
+                              mr: get4k(8),
+                              ml: get4k(32),
+                              my: get4k(20),
+                            },
+                          }}
+                        />
+                      )}
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </ListItem>
+              ))}
+            </List>
+            <Divider sx={{ mx: 2, mt: 2, [theme.breakpoints.up("xxxl")]: { mx: get4k(16), mt: get4k(16) } }} />
+            <Box sx={{ width: "100%", height: 84, display: "flex", alignItems: "center", padding: 2, paddingLeft: !isDrawerOpen ? 2 : 4, position: "relative", justifyContent: !isDrawerOpen ? "center" : "flex-start", [theme.breakpoints.up("xxxl")]: { padding: get4k(16), paddingLeft: !isDrawerOpen ? get4k(16) : get4k(32) } }}>
+              {!isDrawerOpen ? (
+                <img src={AppLogoIcon} width={25} height={52} alt="app logo" />
+              ) : (
+                <>
+                  <img src={AppLogo} width={125} height={37} alt="app logo" />
+                </>
+              )}
+            </Box>
+          </Scrollbars>
         </Box>
       </Drawer>
       <Outlet />
